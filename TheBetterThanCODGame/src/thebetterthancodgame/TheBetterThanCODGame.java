@@ -38,7 +38,7 @@ import javafx.scene.text.Text;
         
       List<Item> iteml = inv.items;
    // Setup UI elements here
-    Label topLbl = new Label("Level: "+player.level+ " Location: "+player.pos.x+","+player.pos.y);
+   
     Label leftLbl = new Label("STATUS");
     Label rightLbl = new Label("INVENTORY");
      Label bottomLbl = new Label("Enter Command");
@@ -50,18 +50,19 @@ import javafx.scene.text.Text;
      VBox rightVb = new VBox();
     VBox bottomVb = new VBox();
     VBox center = new VBox();
+    Label topLbl = new Label();
     
      @Override
      public void init(){ // Use the init method to configure widgets
        // Set fonts for all labels using CSS
          center.setAlignment(Pos.CENTER);
         final TextArea textarea = new TextArea();
-       topLbl.setFont(Font.font("Verdana", FontWeight.BOLD, 18));
-       leftLbl.setFont(Font.font("Verdana", FontWeight.BOLD, 18));
-       rightLbl.setFont(Font.font("Verdana", FontWeight.BOLD, 18));
-       bottomLbl.setFont(Font.font("Verdana", FontWeight.BOLD, 18));
+       topLbl.setFont(Font.font("Helvetica", FontWeight.BOLD, 18));
+       leftLbl.setFont(Font.font("Helvetica", FontWeight.BOLD, 18));
+       rightLbl.setFont(Font.font("Helvetica", FontWeight.BOLD, 18));
+       bottomLbl.setFont(Font.font("Helvetica", FontWeight.BOLD, 18));
         Text categorys = new Text("Status");
-            categorys.setFont(Font.font("Arial", FontWeight.BOLD, 20));
+            categorys.setFont(Font.font("Helvetica", FontWeight.BOLD, 20));
             topVb.getChildren().add(categorys); 
        // Configure the VBoxes
        topVb.getChildren().add(topLbl);
@@ -82,19 +83,21 @@ import javafx.scene.text.Text;
        bottomVb.setAlignment(Pos.CENTER);
        bottomVb.setStyle("-fx-border-stylel:solid; -fx-border-width:1pt; -fx-border-color:black;"); 
        bottomVb.setSpacing(6);
+       topVb.setSpacing(5);
+       topVb.setPadding(new Insets(10, 30, 30, 30));
         bottomVb.setPadding(new Insets(10, 50, 50, 50));
        //elements
         
       
-       int is = 0;
+       
        for(Item i:iteml){
-           is++;
-           Text category = new Text("Item "+ is+ ": " +i.name);
+          
+           Text category = new Text(i.name);
             category.setFont(Font.font("Arial", FontWeight.BOLD, 20));
             rightVb.getChildren().add(category); 
-            System.out.println("sdf");
+            
        }
-       Image image = new Image("file:C:/res/simon.png");
+       Image image = new Image("file:C:/res/boss.png");
    
         ImageView iv1 = new ImageView();
         iv1.setImage(image);
@@ -107,17 +110,18 @@ import javafx.scene.text.Text;
         fNameFld.setOnAction((event) -> {
             
             String text = fNameFld.getText();
-            processEvent(text);
             fNameFld.clear();
             textarea.appendText("\n" +text);
-            
+            textarea.appendText("\n" +Process.processEvent(text,world));
+             topLbl = new Label("Level: "+player.level+ " Location: "+player.pos.x+","+player.pos.y);
+             topVb.getChildren().add(topLbl);
         });
           iv1.setFitWidth(220);
          iv1.setPreserveRatio(true);
          iv1.setSmooth(true);
          iv1.setCache(true);
 
-         textarea.setPrefColumnCount(14);
+         textarea.setPrefColumnCount(15);
          textarea.setPrefRowCount(32);
         Button saveButt = new Button("Enter");
         leftVb.getChildren().add(textarea);
@@ -155,51 +159,5 @@ import javafx.scene.text.Text;
       primaryStage.setScene(new Scene(borderPane, 300, 250));
        primaryStage.show();
      }
-<<<<<<< HEAD
-     public String processEvent(String msg){
-         String m = msg.trim();
-         String[] words = m.split(" ");
-         int argAm = words.length;
-         System.out.println(argAm);
-         if("attack".equals(words[0]) || "fight".equals(words[0])){
-             return world.p.attack(world);
-         }
-         if("use".equals(words[0]) || ("take".equals(words[0]) && "out".equals(words[1]))){
-             if(world.p.inv.use(words[1]) | world.p.inv.use(words[2])){
-                                 
-             }else{
-                return "You don't have this"; 
-             }
-         }
-         if("go".equals(words[0]) || "move".equals(words[0]) || "head".equals(words[0]) || "walk".equals(words[0])){
-             switch(words[1]){
-                case "north":
-                case "up":
-                case "forward":
-                    world.p.pos.y += 1;
-                    break;
-                case "left":
-                case "west":
-                    world.p.pos.x -= 1;
-                    break;
-                case "south":
-                case "down":
-                case "back":
-                case "backwards":
-                    world.p.pos.y -= 1;
-                    break;
-                case "right":
-                case "east":
-                    world.p.pos.x += 1;
-                    break;
-             }
-             world.printInfo(world.p.pos);
-         }
-         return "Command not found";
-=======
-     public void processEvent(String msg){
-         String m = msg;
-         
->>>>>>> origin/master
-     }
+     
    }
