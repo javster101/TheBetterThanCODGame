@@ -101,7 +101,9 @@ public class World {
         if(worldmap[(int)s.x][(int)s.y].e.e == EnemyType.BLANK){
             msg += "There are no enemies\n";
             try{
-                msg += "There is a " + worldmap[(int)s.x][(int)s.y].i.name + " on the floor.\n";
+                if(worldmap[(int)s.x][(int)s.y].i.name.trim() != ""){
+                    msg += "There is a " + worldmap[(int)s.x][(int)s.y].i.name + " on the floor.\n";
+                }
             }catch(NullPointerException e){
             
             }
