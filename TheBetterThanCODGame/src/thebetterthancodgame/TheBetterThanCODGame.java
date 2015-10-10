@@ -18,6 +18,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
    import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.GridPane;
    import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
@@ -56,7 +57,7 @@ import javafx.scene.text.Text;
      VBox leftVb = new VBox();
      VBox rightVb = new VBox();
     VBox bottomVb = new VBox();
-    VBox center = new VBox();
+    GridPane center = new GridPane();
     Label topLbl = new Label("Level: "+player.level+ " Location: "+player.pos.x+","+player.pos.y);
     
      @Override
@@ -64,9 +65,13 @@ import javafx.scene.text.Text;
        // Set fonts for all labels using CSS
          HealthBar health = new HealthBar(Color.LIMEGREEN);
          HealthBar wearbar= new HealthBar(Color.AQUA);
-         center.setAlignment(Pos.CENTER);
+          center.setHgap(10);
+    center.setVgap(10);
+    center.setPadding(new Insets(0, 10, 0, 10));
          topVb.getChildren().add(topLbl);
         final TextArea textarea = new TextArea();
+        final TextArea invarea = new TextArea();
+  
        topLbl.setFont(Font.font("Helvetica", FontWeight.BOLD, 18));
        leftLbl.setFont(Font.font("Helvetica", FontWeight.BOLD, 18));
        rightLbl.setFont(Font.font("Helvetica", FontWeight.BOLD, 18));
@@ -104,23 +109,23 @@ import javafx.scene.text.Text;
        //elements
         
      
-       for(Item i:iteml){
-          
-           Text category = new Text(i.name);
-            category.setFont(Font.font("Arial", FontWeight.BOLD, 20));
-            rightVb.getChildren().add(category); 
-            
-       }
+       
        Image image = new Image("file:C:/res/simon.png");
+       Image imageenemy = new Image("file:C:/res/boss.png");
    
         ImageView iv1 = new ImageView();
-        //iv1.setImage(image);
+        ImageView iv2 = new ImageView();
+        iv1.setImage(image);
+         iv2.setImage(imageenemy);
        // iv1.fitWidthProperty().bind(center.widthProperty());
   //  iv1.fitHeightProperty().bind(center.heightProperty());
        Label fNameLbl = new Label("Console");
         TextField fNameFld = new TextField();
         textarea.setEditable(false);
+        invarea.setEditable(false);
         //textbox event
+        
+        rightVb.getChildren().add(invarea);
         fNameFld.setOnAction((event) -> {
             
             String text = fNameFld.getText();
@@ -141,16 +146,30 @@ import javafx.scene.text.Text;
             nnn.set("Current Item: " + inv.currentItem.name);
             wearbar.setValue(inv.currentItem.wear, inv.currentItem.maxWear);
             }
+            invarea.clear();
+            for(Item i:iteml){
+          
+         
+            invarea.appendText(i.name);
+            
+            }
             currentItem.textProperty().bind(nnn);
             
              
         });
-          iv1.setFitWidth(220);
+          iv1.setFitWidth(290);
          iv1.setPreserveRatio(true);
          iv1.setSmooth(true);
          iv1.setCache(true);
+          iv2.setFitWidth(290);
+         iv2.setPreserveRatio(true);
+         iv2.setSmooth(true);
+         iv2.setCache(true);
 
          textarea.setPrefColumnCount(17);
+         
+         invarea.setPrefColumnCount(13);
+         invarea.setPrefRowCount(25);
          textarea.setPrefRowCount(32);
         Button saveButt = new Button("Enter");
         leftVb.getChildren().add(textarea);
@@ -160,13 +179,14 @@ import javafx.scene.text.Text;
          
          topVb.getChildren().add(health);  
   topVb.setMargin( health, new Insets( 6,0,0,6));  
-         iv1.setFitWidth(400);
+         iv1.setFitWidth(200);
          iv1.setPreserveRatio(true);
          iv1.setSmooth(true);
          iv1.setCache(true);
         
           center.setPrefWidth(400);
-         center.getChildren().add(iv1);
+           center.add(iv1, 0, 0, 1, 2); 
+           center.add(iv2, 20, 0, 1, 2); 
        // Add VBoxes to Pane
        borderPane.setTop(topVb);
        borderPane.setLeft(leftVb);
