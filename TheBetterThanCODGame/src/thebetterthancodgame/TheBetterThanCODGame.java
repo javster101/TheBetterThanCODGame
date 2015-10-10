@@ -48,7 +48,7 @@ import javafx.scene.text.Text;
      Label currentItem = new Label("Current Item: " + "None");
     Label rightLbl = new Label("Inventory");
      Label bottomLbl = new Label("Enter Command");
-     Label labeld=new Label("Wear");
+     Label labeld=new Label("Item Wear");
      Button centerBtn = new Button("Center");
     
        
@@ -156,6 +156,10 @@ import javafx.scene.text.Text;
             nnn.set("Current Item: " + inv.currentItem.name);
             wearbar.setValue(inv.currentItem.wear, inv.currentItem.maxWear);
             }
+            Vector2f location = world.p.pos;
+                    
+            Enemy e = world.worldmap[(int)location.x][(int)location.y].e;
+            
             invarea.clear();
             for(Item i:iteml){
           
@@ -195,7 +199,7 @@ import javafx.scene.text.Text;
          iv1.setCache(true);
         
           center.setPrefWidth(400);
-           center.add(iv1, 0, 0, 1, 2); 
+           center.add(iv1, 0, 35, 1, 2); 
            center.add(iv2, 20, 0, 1, 2); 
        // Add VBoxes to Pane
        borderPane.setTop(topVb);
