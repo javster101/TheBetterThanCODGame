@@ -6,6 +6,7 @@
 
 package thebetterthancodgame;
 
+import java.util.Random;
 import javafx.scene.image.Image;
 
 /**
@@ -19,6 +20,7 @@ public class Player {
     public Image i;
     public Vector2f pos;
     public int xp;
+    public Random accuracy = new Random();
     public Player(int level){
         this.level = level;
         inv = new Inventory(20);
@@ -47,8 +49,18 @@ public class Player {
             return "No enemy!";
         }else{
             Enemy e = t.e;
-            e.health -= inv.currentItem.damage;
-            msg += "Hit for " + inv.currentItem.damage + " damage! \n";
+            if(accuracy.nextInt() % 100 <= inv.currentItem.accuracy)
+            {
+                e.health -= inv.currentItem.damage;
+                msg += "Hit for " + inv.currentItem.damage + " damage! \n";
+                inv.currentItem.xp += this.level*5;
+                if(inv.currentItem.xp >= 100 + (30*(inv.currentItem.level-1)))
+                    inv.currentItem.levelUp();
+            }
+            else
+            {
+                msg += "Missed! \n";
+            }
             if(e.health < 0){
                 msg += "Enemy " + e.name + "Killed!\n";
                 xp += e.xpGain;
