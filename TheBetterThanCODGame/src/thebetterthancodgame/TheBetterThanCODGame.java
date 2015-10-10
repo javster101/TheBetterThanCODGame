@@ -27,11 +27,7 @@ import javafx.scene.text.Text;
      World world = new World();
      Player player = world.p;
      Inventory inv = player.inv;
-     boolean n = inv.add(new Item());
-     boolean n1 = inv.add(new Item());
-     boolean n2 = inv.add(new Item());
-     boolean n3 = inv.add(new Item());
-     boolean n4 = inv.add(new Item());
+    
      
      
       List<Item> iteml = inv.items;
