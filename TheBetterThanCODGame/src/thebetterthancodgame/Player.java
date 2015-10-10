@@ -18,7 +18,7 @@ public class Player {
     public int level;
     public Image i;
     public Vector2f pos;
-    public Player(int level, Image i){
+    public Player(int level){
         this.level = level;
         inv = new Inventory(20);
         this.i = i;
@@ -26,5 +26,7 @@ public class Player {
     public void setPos(Vector2f f){
         pos = f;
     }
-    
+    public void damage(int i){
+        health -= i;
+    }
 }

@@ -14,7 +14,7 @@ public class Area {
     Enemy e;
     Vector2f pos;
     int level;
-    public Area(Vector2f p, int l){
+    public Area(Vector2f p, int l, Enemy e){
         this.pos = p;
         level = l;
     }
