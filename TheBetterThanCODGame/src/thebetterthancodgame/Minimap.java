@@ -10,6 +10,7 @@ package thebetterthancodgame;
  *
  * @author Javier
  */
-public enum EnemyType {
-    BEAVER,SNEAKYBEAVER,JUSTINBEAVER,SNEAKYBEAKYCT,BLANK,STALIN,BOSS;
+public class Minimap {
+    int[][] map = new int[3][3];
+    
 }

@@ -13,6 +13,7 @@ package thebetterthancodgame;
 public class Process {
     public static String processEvent(String msg, World world){
          String m = msg.trim();
+         m = m.toLowerCase();
          String[] words = m.split(" ");
          int argAm = words.length;
          String finMsg;
@@ -24,6 +25,13 @@ public class Process {
                 return "Now using " + words[1];
              }else{
                 return "You don't have this"; 
+             }
+         }
+         if("get".equals(words[0])){
+             if(world.getItem(world.p.inv,world.p.getPos())){
+                return "Picked up item!";
+             }else{
+                return "There's nothing to get!"; 
              }
          }
          if("go".equals(words[0]) || "move".equals(words[0]) || "head".equals(words[0]) || "walk".equals(words[0])){
@@ -70,7 +78,13 @@ public class Process {
              return toReturn;
                      
          }
-         
+         if("remove".equals(words[0]) /*|| ("take".equals(words[0]) && "out".equals(words[1]))*/){
+             if(world.p.inv.remove(words[1])/* | world.p.inv.use(words[2])*/){
+                return "You have removed " + words[1];
+             }else{
+                return "You don't have this anyway"; 
+             }
+         }
          return "Command not found";
      }
 }

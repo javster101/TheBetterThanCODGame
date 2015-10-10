@@ -19,6 +19,8 @@ public class World {
         Random r = new Random();
         p = new Player(1);
         p.setPos(new Vector2f(50,50));
+        int xb = r.nextInt()%9;
+        int yb = r.nextInt()%9;
         for(int j = 0; j < 100; j++){
             for(int k = 0; k < 100; k++){
                 int levelDev = (r.nextInt() % 3)-1;
@@ -28,7 +30,7 @@ public class World {
                 Enemy e = new Enemy(0,0,EnemyType.BLANK,"",0,0);
                 worldmap[j][k] = new Area(new Vector2f(j,k), level + levelDev,e);
                 worldmap[j][k].i = new Item(ItemList.Blank); 
-                if(level > 30 && enTypeGen < 6){
+                if(level > 3 && enTypeGen < 6){
                     worldmap[j][k].i = new Item(ItemList.Medkit);                    
                 }
                 if(level > 2 && enTypeGen < 3){
@@ -51,11 +53,12 @@ public class World {
                 }
                 if(level > 30 && enTypeGen < 1){
                     worldmap[j][k].i = new Item(ItemList.Negev);                  
-                }
+                }                              
                 if(chanceofblank == 2){
                     worldmap[j][k].e = new Enemy(0,0,EnemyType.BLANK,"",0,0);
                     continue;
                 }
+                  
                 switch(enTypeGen){
                     case 0:
                     case 1:
@@ -81,6 +84,9 @@ public class World {
                 if(level > 30 && (enTypeGen  < 3)){
                      e = new Enemy(level+levelDev, level, EnemyType.STALIN,"Stalin",10 * (level / 2),5);
                 }
+                if((xb + 40) == j && (yb + 40) == k){
+                    worldmap[j][k].e = new Enemy(50,50,EnemyType.BOSS,"BOSS",100,80);
+                } 
                 System.out.println(e.e);
                 worldmap[j][k] = new Area(new Vector2f(j,k), level + levelDev,e);
                 
@@ -107,7 +113,9 @@ public class World {
     public boolean getItem(Inventory i, Vector2f s){
         if(!(worldmap[(int)s.x][(int)s.y].i.names == ItemList.Blank)){
             i.add(worldmap[(int)s.x][(int)s.y].i);
+            System.out.println(worldmap[(int)s.x][(int)s.y].i.name);
             worldmap[(int)s.x][(int)s.y].i = new Item(ItemList.Blank);
+            return true;
         }
         return false;
     }
