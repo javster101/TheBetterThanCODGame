@@ -1,7 +1,9 @@
 package thebetterthancodgame;
    
 
+import java.util.List;
     import javafx.application.Application;
+import static javafx.application.Application.launch;
     import javafx.event.ActionEvent;
     import javafx.event.EventHandler;
     import javafx.geometry.Pos;
@@ -15,12 +17,16 @@ import javafx.scene.image.ImageView;
    import javafx.scene.layout.VBox;
    import javafx.scene.text.Font;
    import javafx.scene.text.FontWeight;
+import javafx.scene.text.Text;
    import javafx.stage.Stage;
    
    public class TheBetterThanCODGame extends Application {
    
      BorderPane borderPane = new BorderPane(); // Container for the app
-     
+     World world = new World();
+     Player player = world.p;
+     Inventory inv = player.inv;
+      List<Item> iteml = inv.items;
    // Setup UI elements here
     Label topLbl = new Label("AREA");
     Label leftLbl = new Label("STATUS");
@@ -38,6 +44,8 @@ import javafx.scene.image.ImageView;
      @Override
      public void init(){ // Use the init method to configure widgets
        // Set fonts for all labels using CSS
+        
+        
        topLbl.setFont(Font.font("Verdana", FontWeight.BOLD, 18));
        leftLbl.setFont(Font.font("Verdana", FontWeight.BOLD, 18));
        rightLbl.setFont(Font.font("Verdana", FontWeight.BOLD, 18));
@@ -60,7 +68,12 @@ import javafx.scene.image.ImageView;
        bottomVb.setAlignment(Pos.CENTER);
        bottomVb.setStyle("-fx-border-stylel:solid; -fx-border-width:1pt; -fx-border-color:black;");  
        //elements
-       Image image = new Image("file:C:/res/boss.png");
+       for(Item i:iteml){
+           Text category = new Text(i.name);
+            category.setFont(Font.font("Arial", FontWeight.BOLD, 10));
+            rightVb.getChildren().add(category); 
+       }
+       Image image = new Image("file:C:/res/unnamed.png");
    
         ImageView iv1 = new ImageView();
         iv1.setImage(image);
