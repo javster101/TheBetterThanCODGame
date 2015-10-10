@@ -33,7 +33,7 @@ import javafx.scene.text.Text;
      World world = new World();
      Player player = world.p;
      Inventory inv = player.inv;
-    
+    StringProperty texturepath= new SimpleStringProperty();
      
       boolean n = inv.add(new Item(ItemList.Dagger));
        boolean n1 = inv.add(new Item(ItemList.Airhorn));
@@ -63,6 +63,7 @@ import javafx.scene.text.Text;
      @Override
      public void init(){ // Use the init method to configure widgets
        // Set fonts for all labels using CSS
+         texturepath.set("file:C:/res/blank.png");
          HealthBar health = new HealthBar(Color.LIMEGREEN);
          HealthBar wearbar= new HealthBar(Color.AQUA);
           center.setHgap(10);
@@ -116,7 +117,7 @@ import javafx.scene.text.Text;
             }
        
        Image image = new Image("file:C:/res/simon.png");
-       Image imageenemy = new Image("file:C:/res/plank.png");
+       Image imageenemy = new Image(texturepath.getValue());
    invarea.setStyle(""
         + "-fx-font-size: 20px;"
         + "-fx-font-style: italic;"
@@ -159,7 +160,13 @@ import javafx.scene.text.Text;
             Vector2f location = world.p.pos;
                     
             Enemy e = world.worldmap[(int)location.x][(int)location.y].e;
-            
+            if(e == null){
+                 texturepath.set("file:C:/res/blank.png");
+            }else{
+            texturepath.set("file:C:/res/"+e.texNameType);
+            }
+            Image sdi = new Image(texturepath.get());
+            iv2.setImage(sdi);
             invarea.clear();
             for(Item i:iteml){
           
@@ -175,7 +182,7 @@ import javafx.scene.text.Text;
          iv1.setPreserveRatio(true);
          iv1.setSmooth(true);
          iv1.setCache(true);
-          iv2.setFitWidth(290);
+          iv2.setFitWidth(100);
          iv2.setPreserveRatio(true);
          iv2.setSmooth(true);
          iv2.setCache(true);
