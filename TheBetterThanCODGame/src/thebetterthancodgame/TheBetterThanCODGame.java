@@ -43,6 +43,7 @@ import javafx.scene.text.Text;
    // Setup UI elements here
    
     Label leftLbl = new Label("STATUS");
+     Label currentItem = new Label("Current Item: " + "None");
     Label rightLbl = new Label("INVENTORY");
      Label bottomLbl = new Label("Enter Command");
      Button centerBtn = new Button("Center");
@@ -70,11 +71,12 @@ import javafx.scene.text.Text;
         Text categorys = new Text("Status");
             categorys.setFont(Font.font("Helvetica", FontWeight.BOLD, 20));
             topVb.getChildren().add(categorys); 
+            currentItem.setFont(Font.font("Helvetica", FontWeight.BOLD, 20));
        // Configure the VBoxes
       
        topVb.setAlignment(Pos.CENTER);
        topVb.setStyle("-fx-border-stylel:solid; -fx-border-width:1pt; -fx-border-color:black;");
-       
+       rightVb.getChildren().add(currentItem);
        leftVb.getChildren().add(leftLbl);
       leftVb.setAlignment(Pos.CENTER);
       
@@ -93,6 +95,7 @@ import javafx.scene.text.Text;
        topVb.setPadding(new Insets(10, 30, 30, 30));
         bottomVb.setPadding(new Insets(10, 50, 50, 50));
        //elements
+        
      
        for(Item i:iteml){
           
@@ -119,9 +122,19 @@ import javafx.scene.text.Text;
             textarea.appendText("\n" +Process.processEvent(text,world));
             String ns = "Level: "+player.level+ " Location: "+player.pos.x+","+player.pos.y;
             StringProperty nn= new SimpleStringProperty();
-            health.setValue(player.health,200);
+            StringProperty nnn= new SimpleStringProperty();
+            health.setValue(player.health,player.maxHealth);
+            System.out.println(player.health+ ","+player.maxHealth);
             nn.set(ns);
+            
             topLbl.textProperty().bind(nn);
+            if(inv.currentItem == null){
+                  nnn.set("Current Item: " + "None");
+            }else{
+            nnn.set("Current Item: " + inv.currentItem.name);
+            }
+            currentItem.textProperty().bind(nnn);
+            
              
         });
           iv1.setFitWidth(220);
