@@ -38,6 +38,19 @@ public class Player {
     public void heal(int i){
         health += i;
     }
+    public boolean use(String item)
+    {
+        Item lastItem = inv.currentItem;
+        if(!inv.use(item))
+            return false;
+        if(inv.currentItem.damage == 0 && inv.currentItem.healthRegen > 0)
+        {
+            this.health += inv.currentItem.healthRegen;
+            inv.remove(item);
+            inv.use(lastItem.name);
+        }
+        return true;
+    }
     public void levelUp(){
         level++;
         health += 5;
