@@ -95,8 +95,8 @@ import javafx.scene.text.Text;
         //textbox event
         fNameFld.setOnAction((event) -> {
             
-            System.out.println("TextField Action");
             String text = fNameFld.getText();
+            processEvent(text);
             fNameFld.clear();
             
         });
@@ -133,5 +133,9 @@ import javafx.scene.text.Text;
    
       primaryStage.setScene(new Scene(borderPane, 300, 250));
        primaryStage.show();
+     }
+     public void processEvent(String msg){
+         String m = msg;
+         String prefix = msg.
      }
    }

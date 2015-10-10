@@ -29,4 +29,7 @@ public class Player {
     public void damage(int i){
         health -= i;
     }
+    public void attack(){
+        
+    }
 }
