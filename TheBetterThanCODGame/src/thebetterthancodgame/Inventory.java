@@ -42,10 +42,14 @@ public class Inventory {
         return currentItem;
     }
     public boolean remove(String s){
+        boolean worked;
         for(Item item : items){
-            if(item.name.equals(s)){
+            if(item.name.toLowerCase().equals(s.toLowerCase())){
+                
                 items.remove(item);
+                return true;
             }
+            
         }
         return false;
     }

@@ -78,7 +78,7 @@ public class Process {
              return toReturn;
                      
          }
-         if("remove".equals(words[0]) /*|| ("take".equals(words[0]) && "out".equals(words[1]))*/){
+         if("remove".equals(words[0])|| "drop".equals(words[0])){
              if(world.p.inv.remove(words[1])/* | world.p.inv.use(words[2])*/){
                 return "You have removed " + words[1];
              }else{
