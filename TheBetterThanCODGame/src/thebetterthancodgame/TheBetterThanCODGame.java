@@ -10,6 +10,7 @@ import static javafx.application.Application.launch;
     import javafx.scene.Scene;
     import javafx.scene.control.Button;
     import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -35,7 +36,7 @@ import javafx.scene.text.Text;
      
       List<Item> iteml = inv.items;
    // Setup UI elements here
-    Label topLbl = new Label("AREA");
+    Label topLbl = new Label("Level: "+player.level);
     Label leftLbl = new Label("STATUS");
     Label rightLbl = new Label("INVENTORY");
      Label bottomLbl = new Label("Bottom");
@@ -57,7 +58,9 @@ import javafx.scene.text.Text;
        leftLbl.setFont(Font.font("Verdana", FontWeight.BOLD, 18));
        rightLbl.setFont(Font.font("Verdana", FontWeight.BOLD, 18));
        bottomLbl.setFont(Font.font("Verdana", FontWeight.BOLD, 18));
-       
+        Text categorys = new Text("Status");
+            categorys.setFont(Font.font("Arial", FontWeight.BOLD, 20));
+            topVb.getChildren().add(categorys); 
        // Configure the VBoxes
        topVb.getChildren().add(topLbl);
        topVb.setAlignment(Pos.CENTER);
@@ -92,7 +95,17 @@ import javafx.scene.text.Text;
     iv1.fitHeightProperty().bind(center.heightProperty());
        Label fNameLbl = new Label("Console");
         TextField fNameFld = new TextField();
+        
+        //textbox event
+        fNameFld.setOnAction((event) -> {
+            
+            System.out.println("TextField Action");
+            
+        });
+         final TextArea textarea = new TextArea();
+         textarea.setPrefRowCount(1);
         Button saveButt = new Button("Enter");
+        leftVb.getChildren().add(textarea);
         bottomVb.getChildren().add(fNameLbl);
          bottomVb.getChildren().add(fNameFld);
          bottomVb.getChildren().add(saveButt);
