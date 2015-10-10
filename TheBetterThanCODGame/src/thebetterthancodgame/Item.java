@@ -20,6 +20,7 @@ public class Item {
     int xp = 0;
     ItemList names;
     String name;
+    String filePath;
     boolean defined = false;
     
     public Item(ItemList names)
@@ -124,6 +125,7 @@ public class Item {
         }
         
         wear = maxWear;
+        filePath = name.toLowerCase() + ".png";
     }
     
     public boolean enchant(int playerLevel)
