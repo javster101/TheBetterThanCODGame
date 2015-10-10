@@ -96,6 +96,8 @@ import javafx.scene.text.Text;
         fNameFld.setOnAction((event) -> {
             
             System.out.println("TextField Action");
+            String text = fNameFld.getText();
+            fNameFld.clear();
             
         });
          final TextArea textarea = new TextArea();
