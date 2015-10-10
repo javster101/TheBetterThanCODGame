@@ -6,6 +6,7 @@ import java.util.List;
 import static javafx.application.Application.launch;
     import javafx.event.ActionEvent;
     import javafx.event.EventHandler;
+import javafx.geometry.Insets;
     import javafx.geometry.Pos;
     import javafx.scene.Scene;
     import javafx.scene.control.Button;
@@ -29,13 +30,18 @@ import javafx.scene.text.Text;
      Inventory inv = player.inv;
     
      
-     
+      boolean n = inv.add(new Item(ItemList.Negev));
+       boolean n1 = inv.add(new Item(ItemList.Airhorn));
+        boolean n2 = inv.add(new Item(ItemList.Glock18));
+         boolean n3 = inv.add(new Item(ItemList.MountainDew)); 
+          boolean n4 = inv.add(new Item(ItemList.Glock18));
+        
       List<Item> iteml = inv.items;
    // Setup UI elements here
-    Label topLbl = new Label("Level: "+player.level);
+    Label topLbl = new Label("Level: "+player.level+ " Location: "+player.pos.x+","+player.pos.y);
     Label leftLbl = new Label("STATUS");
     Label rightLbl = new Label("INVENTORY");
-     Label bottomLbl = new Label("Bottom");
+     Label bottomLbl = new Label("Enter Command");
      Button centerBtn = new Button("Center");
      
      // Using a VBox (Veritcal Box) to hold UI elements
@@ -49,7 +55,7 @@ import javafx.scene.text.Text;
      public void init(){ // Use the init method to configure widgets
        // Set fonts for all labels using CSS
         
-        
+        final TextArea textarea = new TextArea();
        topLbl.setFont(Font.font("Verdana", FontWeight.BOLD, 18));
        leftLbl.setFont(Font.font("Verdana", FontWeight.BOLD, 18));
        rightLbl.setFont(Font.font("Verdana", FontWeight.BOLD, 18));
@@ -64,17 +70,22 @@ import javafx.scene.text.Text;
        
        leftVb.getChildren().add(leftLbl);
       leftVb.setAlignment(Pos.CENTER);
-       leftVb.setStyle("-fx-border-stylel:solid; -fx-border-width:1pt; -fx-border-color:black;");    
+      
+       leftVb.setStyle("-fx-border-stylel:solid; -fx-border-width:1pt; -fx-border-color:black; ");    
        
        rightVb.getChildren().add(rightLbl);
        rightVb.setAlignment(Pos.CENTER);
-       rightVb.setStyle("-fx-border-stylel:solid; -fx-border-width:1pt; -fx-border-color:black;");    
-   
+       rightVb.setStyle("-fx-border-stylel:solid; -fx-border-width:1pt; -fx-border-color:black;padding:10px;");    
+   rightVb.setPadding(new Insets(10, 50, 50, 50));
+    rightVb.setSpacing(10);
        bottomVb.getChildren().add(bottomLbl);
        bottomVb.setAlignment(Pos.CENTER);
-       bottomVb.setStyle("-fx-border-stylel:solid; -fx-border-width:1pt; -fx-border-color:black;");  
+       bottomVb.setStyle("-fx-border-stylel:solid; -fx-border-width:1pt; -fx-border-color:black;"); 
+       bottomVb.setSpacing(6);
+        bottomVb.setPadding(new Insets(10, 50, 50, 50));
        //elements
-       System.out.println("sdf");
+        
+      
        int is = 0;
        for(Item i:iteml){
            is++;
@@ -83,30 +94,35 @@ import javafx.scene.text.Text;
             rightVb.getChildren().add(category); 
             System.out.println("sdf");
        }
-       Image image = new Image("file:C:/res/unnamed.png");
+       Image image = new Image("file:C:/res/simon.png");
    
         ImageView iv1 = new ImageView();
         iv1.setImage(image);
-        iv1.fitWidthProperty().bind(center.widthProperty());
-    iv1.fitHeightProperty().bind(center.heightProperty());
+       // iv1.fitWidthProperty().bind(center.widthProperty());
+  //  iv1.fitHeightProperty().bind(center.heightProperty());
        Label fNameLbl = new Label("Console");
         TextField fNameFld = new TextField();
-        
+        textarea.setEditable(false);
         //textbox event
         fNameFld.setOnAction((event) -> {
             
             String text = fNameFld.getText();
             processEvent(text);
             fNameFld.clear();
+            textarea.appendText("\n" +text);
             
         });
-         final TextArea textarea = new TextArea();
-         textarea.setPrefRowCount(1);
+         
+         textarea.setPrefColumnCount(14);
+         textarea.setPrefRowCount(32);
         Button saveButt = new Button("Enter");
         leftVb.getChildren().add(textarea);
         bottomVb.getChildren().add(fNameLbl);
          bottomVb.getChildren().add(fNameFld);
-         bottomVb.getChildren().add(saveButt);
+         iv1.setFitWidth(400);
+         iv1.setPreserveRatio(true);
+         iv1.setSmooth(true);
+         iv1.setCache(true);
           center.setPrefWidth(400);
          center.getChildren().add(iv1);
        // Add VBoxes to Pane
