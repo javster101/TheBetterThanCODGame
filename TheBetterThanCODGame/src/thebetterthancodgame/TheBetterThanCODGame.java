@@ -34,7 +34,7 @@ import javafx.scene.text.Text;
      Inventory inv = player.inv;
     
      
-      boolean n = inv.add(new Item(ItemList.Negev));
+      boolean n = inv.add(new Item(ItemList.Dagger));
        boolean n1 = inv.add(new Item(ItemList.Airhorn));
         boolean n2 = inv.add(new Item(ItemList.Glock18));
          boolean n3 = inv.add(new Item(ItemList.MountainDew)); 
