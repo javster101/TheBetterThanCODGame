@@ -259,7 +259,7 @@ import javafx.scene.text.Text;
      
      @Override
      public void start(Stage primaryStage) {
-       primaryStage.setTitle("Border Pane Example");
+       primaryStage.setTitle("Simon's quest");
    
       primaryStage.setScene(new Scene(borderPane, 300, 250));
        primaryStage.show();
