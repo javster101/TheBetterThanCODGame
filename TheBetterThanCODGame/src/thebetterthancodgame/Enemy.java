@@ -12,19 +12,9 @@ import javafx.scene.image.Image;
  *
  * @author Javier
  */
-public class Player {
-    public Inventory inv;
+public class Enemy {
     public double health;
     public int level;
     public Image i;
-    public Vector2f pos;
-    public Player(int level, Image i){
-        this.level = level;
-        inv = new Inventory(20);
-        this.i = i;
-    }
-    public void setPos(Vector2f f){
-        pos = f;
-    }
     
 }
