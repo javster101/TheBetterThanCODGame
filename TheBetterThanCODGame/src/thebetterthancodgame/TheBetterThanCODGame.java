@@ -51,6 +51,7 @@ import javafx.scene.text.Text;
      Label currentItem = new Label("Current Item: " + "None");
     Label rightLbl = new Label("Inventory");
      Label bottomLbl = new Label("Enter Command");
+     Label sdf= new Label("Quests");
      Label labeld=new Label("Item Wear");
      Button centerBtn = new Button("Center");
     
@@ -73,7 +74,7 @@ import javafx.scene.text.Text;
     center.setVgap(0);
     center.setPadding(new Insets(0, 5, 0, 5));
          topVb.getChildren().add(topLbl);
-        final TextArea textarea = new TextArea();
+        
         final TextArea invarea = new TextArea();
   
        topLbl.setFont(Font.font("Helvetica", FontWeight.BOLD, 18));
@@ -137,7 +138,11 @@ import javafx.scene.text.Text;
   //  iv1.fitHeightProperty().bind(center.heightProperty());
        Label fNameLbl = new Label("Console");
         TextField fNameFld = new TextField();
+        TextArea quests = new TextArea();
+        final TextArea textarea = new TextArea();
         textarea.setEditable(false);
+        quests.setEditable(false);
+        
         invarea.setEditable(false);
         //textbox event
         
@@ -167,7 +172,7 @@ import javafx.scene.text.Text;
             }
             }
             Vector2f location = world.p.pos;
-            
+            quests.setText(player.quest.getQuests());
             Enemy e = world.worldmap[(int)location.x][(int)location.y].e;
             if(e == null){
                  texturepath.set("file:C:/res/blank.png");
@@ -209,12 +214,15 @@ import javafx.scene.text.Text;
          
 
          textarea.setPrefColumnCount(19);
-         
+         quests.setPrefRowCount(20);
          invarea.setPrefColumnCount(11);
          invarea.setPrefRowCount(25);
-         textarea.setPrefRowCount(32);
+         textarea.setPrefRowCount(12);
+         
         Button saveButt = new Button("Enter");
         leftVb.getChildren().add(textarea);
+        leftVb.getChildren().add(sdf);
+        leftVb.getChildren().add(quests);
         bottomVb.getChildren().add(fNameLbl);
          bottomVb.getChildren().add(fNameFld);
          
