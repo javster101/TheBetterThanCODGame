@@ -116,6 +116,13 @@ public class Item {
             return false;
         }
     }
-
+    
+    public void levelUp()
+    {
+        level++;
+        damage = (int)(damage*Math.sqrt(level));
+        healthRegen = (int)(healthRegen*Math.sqrt(level));
+        xp = 0;
+    }
 
 }

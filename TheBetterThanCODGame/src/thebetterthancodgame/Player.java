@@ -53,6 +53,9 @@ public class Player {
             {
                 e.health -= inv.currentItem.damage;
                 msg += "Hit for " + inv.currentItem.damage + " damage! \n";
+                inv.currentItem.xp += this.level*5;
+                if(inv.currentItem.xp >= 100 + (30*(inv.currentItem.level-1)))
+                    inv.currentItem.levelUp();
             }
             else
             {
