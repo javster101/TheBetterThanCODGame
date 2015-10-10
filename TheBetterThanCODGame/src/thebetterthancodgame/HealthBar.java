@@ -20,12 +20,12 @@ public class HealthBar extends Pane {
  Rectangle outerHealthRect;  
  Rectangle innerHealthRect;  
    
- public HealthBar() {  
+ public HealthBar(Color color) {  
     
   double height = 10;  
     
- double outerWidth = 100;  
-  double innerWidth = 100;  
+ double outerWidth = 200;  
+  double innerWidth = 200;  
     
   double x=0.0;  
   double y=0.0;  
@@ -38,14 +38,14 @@ public class HealthBar extends Pane {
   
   innerHealthRect = new Rectangle( x, y, innerWidth, height);  
   innerHealthRect.setStrokeType( StrokeType.OUTSIDE);  
-  innerHealthRect.setFill(Color.LIMEGREEN);  
+  innerHealthRect.setFill(color);  
   
   getChildren().addAll( outerHealthRect, innerHealthRect);  
   
  }  
    
  public void setValue( double value,double maxhealth) {  
-  innerHealthRect.setWidth( 100/maxhealth *value);  
+  innerHealthRect.setWidth( 200/maxhealth *value);  
  }  
    
 }  
