@@ -26,6 +26,13 @@ import javafx.scene.text.Text;
      World world = new World();
      Player player = world.p;
      Inventory inv = player.inv;
+     boolean n = inv.add(new Item());
+     boolean n1 = inv.add(new Item());
+     boolean n2 = inv.add(new Item());
+     boolean n3 = inv.add(new Item());
+     boolean n4 = inv.add(new Item());
+     
+     
       List<Item> iteml = inv.items;
    // Setup UI elements here
     Label topLbl = new Label("AREA");
@@ -68,10 +75,14 @@ import javafx.scene.text.Text;
        bottomVb.setAlignment(Pos.CENTER);
        bottomVb.setStyle("-fx-border-stylel:solid; -fx-border-width:1pt; -fx-border-color:black;");  
        //elements
+       System.out.println("sdf");
+       int is = 0;
        for(Item i:iteml){
-           Text category = new Text(i.name);
-            category.setFont(Font.font("Arial", FontWeight.BOLD, 10));
+           is++;
+           Text category = new Text("Item "+ is+ ": " +i.name);
+            category.setFont(Font.font("Arial", FontWeight.BOLD, 20));
             rightVb.getChildren().add(category); 
+            System.out.println("sdf");
        }
        Image image = new Image("file:C:/res/unnamed.png");
    
