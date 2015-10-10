@@ -87,6 +87,12 @@ public class Player {
             if(e.health < 0){
                 msg += "Enemy " + e.name + " Killed!\n";
                 xp += e.xpGain;
+                w.worldmap[(int)pos.x][(int)pos.y].e = new Enemy(0,0,EnemyType.BLANK,"",0,0);
+                try{
+                    msg += "There is a " + t.i.name + " on the floor.\n";
+                }catch(Exception ex){
+                    
+                }
                 if(xp > 10 * level){
                     levelUp();
                     msg += "LEVEL UP \n";

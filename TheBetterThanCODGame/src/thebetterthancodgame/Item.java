@@ -82,6 +82,12 @@ public class Item {
                 accuracy = 90;
                 name = "Dagger";
                 break;
+            case Blank:
+                damage = 0;
+                level = 0;
+                accuracy = 0;
+                name = "";
+                break;
             default:
                 level = 1;
                 maxWear = 1;

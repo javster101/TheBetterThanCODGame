@@ -94,10 +94,21 @@ public class World {
         String msg = "";
         if(worldmap[(int)s.x][(int)s.y].e.e == EnemyType.BLANK){
             msg += "There are no enemies\n";
-            msg += "There is a " + worldmap[(int)s.x][(int)s.y].i.name + " on the floor.\n";
+            try{
+                msg += "There is a " + worldmap[(int)s.x][(int)s.y].i.name + " on the floor.\n";
+            }catch(NullPointerException e){
+            
+            }
         }else{
             msg += "There is a level " +  worldmap[(int)s.x][(int)s.y].e.level + " " + worldmap[(int)s.x][(int)s.y].e.name + " here!";
         }
         return msg;
+    }
+    public boolean getItem(Inventory i, Vector2f s){
+        if(!(worldmap[(int)s.x][(int)s.y].i.names == ItemList.Blank)){
+            i.add(worldmap[(int)s.x][(int)s.y].i);
+            worldmap[(int)s.x][(int)s.y].i = new Item(ItemList.Blank);
+        }
+        return false;
     }
 }
