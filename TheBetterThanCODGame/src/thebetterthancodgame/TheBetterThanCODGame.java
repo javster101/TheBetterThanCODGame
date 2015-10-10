@@ -1,95 +1,102 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package thebetterthancodgame;
+   
 
-/**
- *
- * @author Javier
- */
-
-import java.io.UnsupportedEncodingException;
-import java.net.URL;
-import java.net.URLDecoder;
-import javafx.application.Application;
-import javafx.geometry.HPos;
-import javafx.geometry.Insets;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
+    import javafx.application.Application;
+    import javafx.event.ActionEvent;
+    import javafx.event.EventHandler;
+    import javafx.geometry.Pos;
+    import javafx.scene.Scene;
+    import javafx.scene.control.Button;
+    import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.ColumnConstraints;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Priority;
-import javafx.scene.paint.Color;
-import javafx.stage.Stage;
 import javafx.scene.image.Image;
-/*from w  w w. ja v  a  2s.c  o m*/
-public class TheBetterThanCODGame extends Application {
-  public static void main(String[] args) {
-    Application.launch(args);
-  }
-
-  @Override
-  public void start(Stage primaryStage) throws UnsupportedEncodingException {
-    BorderPane root = new BorderPane();
-    Scene scene = new Scene(root, 780, 750, Color.WHITE);
-
-    GridPane gridpane = new GridPane();
-    gridpane.setPadding(new Insets(5));
-    gridpane.setHgap(5);
-    gridpane.setVgap(5);
-    ColumnConstraints column1 = new ColumnConstraints(100);
-    ColumnConstraints column2 = new ColumnConstraints(50, 350, 600);
-    column2.setHgrow(Priority.ALWAYS);
-    gridpane.getColumnConstraints().addAll(column1, column2);
-    Image image;
-
-    
-     image = new Image("file:C:/res/boss.png");
+import javafx.scene.image.ImageView;
+   import javafx.scene.layout.BorderPane;
+   import javafx.scene.layout.VBox;
+   import javafx.scene.text.Font;
+   import javafx.scene.text.FontWeight;
+   import javafx.stage.Stage;
    
-    ImageView iv1 = new ImageView();
-    iv1.setPreserveRatio(false);
-    iv1.fitWidthProperty().bind(root.widthProperty());
-    iv1.fitHeightProperty().bind(root.heightProperty());
-    iv1.setImage(image);
-    Label fNameLbl = new Label("Console");
-    TextField fNameFld = new TextField();
-    
-
-    Button saveButt = new Button("Enter");
-
-    // First name label
-    GridPane.setHalignment(iv1, HPos.LEFT);
-    gridpane.add(iv1, 0, 0);
-    GridPane.setHalignment(fNameLbl, HPos.LEFT);
-    gridpane.add(fNameLbl, 0, 0);
-
-    // Last name label
+   public class TheBetterThanCODGame extends Application {
    
-
-    // First name field
-    GridPane.setHalignment(fNameFld, HPos.LEFT);
-    gridpane.add(fNameFld, 1, 0);
-
-    // Last name field
- 
-
-    // Save button
-    GridPane.setHalignment(saveButt, HPos.LEFT);
-    gridpane.add(saveButt, 1, 2);
+     BorderPane borderPane = new BorderPane(); // Container for the app
      
-    root.setCenter(gridpane);
-    primaryStage.setScene(scene);
-    primaryStage.show();
-  }
-
-}
-
-
-
+   // Setup UI elements here
+    Label topLbl = new Label("AREA");
+    Label leftLbl = new Label("STATUS");
+    Label rightLbl = new Label("INVENTORY");
+     Label bottomLbl = new Label("Bottom");
+     Button centerBtn = new Button("Center");
+     
+     // Using a VBox (Veritcal Box) to hold UI elements
+     VBox topVb = new VBox();
+     VBox leftVb = new VBox();
+     VBox rightVb = new VBox();
+    VBox bottomVb = new VBox();
+    VBox center = new VBox();
+     
+     @Override
+     public void init(){ // Use the init method to configure widgets
+       // Set fonts for all labels using CSS
+       topLbl.setFont(Font.font("Verdana", FontWeight.BOLD, 18));
+       leftLbl.setFont(Font.font("Verdana", FontWeight.BOLD, 18));
+       rightLbl.setFont(Font.font("Verdana", FontWeight.BOLD, 18));
+       bottomLbl.setFont(Font.font("Verdana", FontWeight.BOLD, 18));
+       
+       // Configure the VBoxes
+       topVb.getChildren().add(topLbl);
+       topVb.setAlignment(Pos.CENTER);
+       topVb.setStyle("-fx-border-stylel:solid; -fx-border-width:1pt; -fx-border-color:black;");
+       
+       leftVb.getChildren().add(leftLbl);
+      leftVb.setAlignment(Pos.CENTER);
+       leftVb.setStyle("-fx-border-stylel:solid; -fx-border-width:1pt; -fx-border-color:black;");    
+       
+       rightVb.getChildren().add(rightLbl);
+       rightVb.setAlignment(Pos.CENTER);
+       rightVb.setStyle("-fx-border-stylel:solid; -fx-border-width:1pt; -fx-border-color:black;");    
+   
+       bottomVb.getChildren().add(bottomLbl);
+       bottomVb.setAlignment(Pos.CENTER);
+       bottomVb.setStyle("-fx-border-stylel:solid; -fx-border-width:1pt; -fx-border-color:black;");  
+       //elements
+       Image image = new Image("file:C:/res/boss.png");
+   
+        ImageView iv1 = new ImageView();
+        iv1.setImage(image);
+        iv1.fitWidthProperty().bind(center.widthProperty());
+    iv1.fitHeightProperty().bind(center.heightProperty());
+       Label fNameLbl = new Label("Console");
+        TextField fNameFld = new TextField();
+        Button saveButt = new Button("Enter");
+        bottomVb.getChildren().add(fNameLbl);
+         bottomVb.getChildren().add(fNameFld);
+         bottomVb.getChildren().add(saveButt);
+          center.setPrefWidth(400);
+         center.getChildren().add(iv1);
+       // Add VBoxes to Pane
+       borderPane.setTop(topVb);
+       borderPane.setLeft(leftVb);
+       borderPane.setRight(rightVb);
+       borderPane.setBottom(bottomVb);
+       borderPane.setCenter(center);
+    
+       // Button event handler
+       centerBtn.setOnAction((ActionEvent event) -> {
+           System.out.println("Center clicked!");
+       });
+      
+     }
+     
+     public static void main(String[] args) {
+       launch(args);
+     }
+     
+     @Override
+     public void start(Stage primaryStage) {
+       primaryStage.setTitle("Border Pane Example");
+   
+      primaryStage.setScene(new Scene(borderPane, 300, 250));
+       primaryStage.show();
+     }
+   }
