@@ -15,7 +15,8 @@ import javafx.scene.image.Image;
  */
 public class Player {
     public Inventory inv;
-    public double health;
+    public double health = 15;
+    public double maxHealth = 15;
     public int level;
     public Image i;
     public Vector2f pos;
@@ -37,6 +38,8 @@ public class Player {
     }
     public void heal(int i){
         health += i;
+        if(health > maxHealth)
+            health = maxHealth;
     }
     public boolean use(String item)
     {
@@ -45,7 +48,7 @@ public class Player {
             return false;
         if(inv.currentItem.damage == 0 && inv.currentItem.healthRegen > 0)
         {
-            this.health += inv.currentItem.healthRegen;
+            heal((int) inv.currentItem.healthRegen);
             inv.remove(item);
             inv.use(lastItem.name);
         }
@@ -83,7 +86,9 @@ public class Player {
                 }
             }else{
                 e.attack(this);
-                msg += "Enemy " + e.name + "hit you! \n";
+                msg += "Enemy " + e.name + " hit you! \n";
+                if(health < 0)
+                    msg += "You have died! \n";
             }
         }
         return msg;

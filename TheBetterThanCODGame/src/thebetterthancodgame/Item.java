@@ -56,6 +56,12 @@ public class Item {
                 accuracy = 90;
                 name = "Mace";
                 break;
+            case BowandArrow:
+                damage = 9;
+                level = 3;
+                accuracy = 85;
+                name = "Bow and Arrow";
+                break;
             case Sword:
                 damage = 8;
                 level = 2;
@@ -65,9 +71,11 @@ public class Item {
             case Dagger:
                 damage = 3;
                 level = 1;
+                accuracy = 90;
                 name = "Dagger";
                 break;
             default:
+                level = 1;
                 accuracy = 100;
                 damage = 0;
                 break;
