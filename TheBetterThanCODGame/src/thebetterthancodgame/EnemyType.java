@@ -11,5 +11,5 @@ package thebetterthancodgame;
  * @author Javier
  */
 public enum EnemyType {
-    BEAVER,SNEAKYBEAVER,JUSTINBEAVER,SNEAKYBEAKYCT,BLANK;
+    BEAVER,SNEAKYBEAVER,JUSTINBEAVER,SNEAKYBEAKYCT,BLANK,STALIN;
 }
