@@ -150,7 +150,7 @@ import javafx.scene.text.Text;
             for(Item i:iteml){
           
          
-            invarea.appendText(i.name);
+            invarea.appendText("\n"+ i.name);
             
             }
             currentItem.textProperty().bind(nnn);
