@@ -6,6 +6,8 @@
 
 package thebetterthancodgame;
 
+import javafx.scene.image.Image;
+
 /**
  *
  * @author Javier
@@ -14,6 +16,7 @@ public class Player {
     public Inventory inv;
     public double health;
     public int level;
+    public Image i;
     public Player(int level){
         this.level = level;
         inv = new Inventory(20);
