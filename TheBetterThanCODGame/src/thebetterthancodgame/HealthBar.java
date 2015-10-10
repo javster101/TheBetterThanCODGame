@@ -24,8 +24,8 @@ public class HealthBar extends Pane {
     
   double height = 10;  
     
- double outerWidth = 200;  
-  double innerWidth = 200;  
+ double outerWidth = 270;  
+  double innerWidth = 270;  
     
   double x=0.0;  
   double y=0.0;  
@@ -45,7 +45,7 @@ public class HealthBar extends Pane {
  }  
    
  public void setValue( double value,double maxhealth) {  
-  innerHealthRect.setWidth( 200/maxhealth *value);  
+  innerHealthRect.setWidth( 270/maxhealth *value);  
  }  
    
 }  
