@@ -15,5 +15,5 @@ public class Item {
     int wear;
     ItemList names;
     String name;
-    
+    boolean defined = false;
 }

@@ -16,5 +16,7 @@ public class Enemy {
     public double health;
     public int level;
     public Image i;
-    
+    public Enemy(double health, int level, Image i){
+        
+    }
 }
