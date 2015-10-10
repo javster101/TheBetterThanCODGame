@@ -87,7 +87,7 @@ public class World {
                 if((xb + 40) == j && (yb + 40) == k){
                     worldmap[j][k].e = new Enemy(50,50,EnemyType.BOSS,"BOSS",100,80);
                 } 
-                System.out.println(e.e);
+               
                 worldmap[j][k] = new Area(new Vector2f(j,k), level + levelDev,e);
                 
             }
