@@ -4,6 +4,8 @@ package thebetterthancodgame;
 import java.util.List;
     import javafx.application.Application;
 import static javafx.application.Application.launch;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
     import javafx.event.ActionEvent;
     import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -44,18 +46,21 @@ import javafx.scene.text.Text;
      Label bottomLbl = new Label("Enter Command");
      Button centerBtn = new Button("Center");
      
+       
      // Using a VBox (Veritcal Box) to hold UI elements
      VBox topVb = new VBox();
      VBox leftVb = new VBox();
      VBox rightVb = new VBox();
     VBox bottomVb = new VBox();
     VBox center = new VBox();
-    Label topLbl = new Label();
+    Label topLbl = new Label("Level: "+player.level+ " Location: "+player.pos.x+","+player.pos.y);
     
      @Override
      public void init(){ // Use the init method to configure widgets
        // Set fonts for all labels using CSS
+         
          center.setAlignment(Pos.CENTER);
+         topVb.getChildren().add(topLbl);
         final TextArea textarea = new TextArea();
        topLbl.setFont(Font.font("Helvetica", FontWeight.BOLD, 18));
        leftLbl.setFont(Font.font("Helvetica", FontWeight.BOLD, 18));
@@ -65,7 +70,7 @@ import javafx.scene.text.Text;
             categorys.setFont(Font.font("Helvetica", FontWeight.BOLD, 20));
             topVb.getChildren().add(categorys); 
        // Configure the VBoxes
-       topVb.getChildren().add(topLbl);
+      
        topVb.setAlignment(Pos.CENTER);
        topVb.setStyle("-fx-border-stylel:solid; -fx-border-width:1pt; -fx-border-color:black;");
        
@@ -97,7 +102,7 @@ import javafx.scene.text.Text;
             rightVb.getChildren().add(category); 
             
        }
-       Image image = new Image("file:C:/res/boss.png");
+       Image image = new Image("file:C:/res/simon.png");
    
         ImageView iv1 = new ImageView();
         iv1.setImage(image);
@@ -111,10 +116,13 @@ import javafx.scene.text.Text;
             
             String text = fNameFld.getText();
             fNameFld.clear();
-            textarea.appendText("\n" +text);
+           
             textarea.appendText("\n" +Process.processEvent(text,world));
-             topLbl = new Label("Level: "+player.level+ " Location: "+player.pos.x+","+player.pos.y);
-             topVb.getChildren().add(topLbl);
+            String ns = "Level: "+player.level+ " Location: "+player.pos.x+","+player.pos.y;
+            StringProperty nn= new SimpleStringProperty();
+            nn.set(ns);
+            topLbl.textProperty().bind(nn);
+             
         });
           iv1.setFitWidth(220);
          iv1.setPreserveRatio(true);

@@ -27,6 +27,7 @@ public class Enemy {
         this.e = e; 
         this.xpGain = xpGain;
         this.accuracy = accuracy;
+        this.name = name;
     }
     public String attack(Player p){
         String message = "";

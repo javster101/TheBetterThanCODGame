@@ -68,6 +68,8 @@ public class World {
         String msg = "";
         if(worldmap[(int)s.x][(int)s.y].e.e == EnemyType.BLANK){
             msg += "There are no enemies\n";
+        }else{
+            msg += "There is a " + worldmap[(int)s.x][(int)s.y].e.name + " here!";
         }
         return msg;
     }
