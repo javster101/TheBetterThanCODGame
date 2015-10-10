@@ -53,6 +53,9 @@ public class Enemy {
             case BOSS:
                 texNameType = "boss.png";
                 break;
+            case STALIN:
+                texNameType = "stalin.png";
+                break;
         }
     }
     public String attack(Player p){
@@ -77,6 +80,10 @@ public class Enemy {
             case SNEAKYBEAKYCT:
                 damage = 4 * level;
                 message = "The Sneaky Beaky Counter Terrorist has hit you for ";
+                break;
+            case STALIN:
+                damage = 5 * level;
+                message = "Stalin has hit you for ";
                 break;
             case BLANK:
                 damage = 0;
