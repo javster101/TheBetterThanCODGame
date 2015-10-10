@@ -56,12 +56,12 @@ import javafx.scene.text.Text;
        // Set fonts for all labels using CSS
          center.setAlignment(Pos.CENTER);
         final TextArea textarea = new TextArea();
-       topLbl.setFont(Font.font("Verdana", FontWeight.BOLD, 18));
-       leftLbl.setFont(Font.font("Verdana", FontWeight.BOLD, 18));
-       rightLbl.setFont(Font.font("Verdana", FontWeight.BOLD, 18));
-       bottomLbl.setFont(Font.font("Verdana", FontWeight.BOLD, 18));
+       topLbl.setFont(Font.font("Helvetica", FontWeight.BOLD, 18));
+       leftLbl.setFont(Font.font("Helvetica", FontWeight.BOLD, 18));
+       rightLbl.setFont(Font.font("Helvetica", FontWeight.BOLD, 18));
+       bottomLbl.setFont(Font.font("Helvetica", FontWeight.BOLD, 18));
         Text categorys = new Text("Status");
-            categorys.setFont(Font.font("Arial", FontWeight.BOLD, 20));
+            categorys.setFont(Font.font("Helvetica", FontWeight.BOLD, 20));
             topVb.getChildren().add(categorys); 
        // Configure the VBoxes
        topVb.getChildren().add(topLbl);
@@ -82,19 +82,21 @@ import javafx.scene.text.Text;
        bottomVb.setAlignment(Pos.CENTER);
        bottomVb.setStyle("-fx-border-stylel:solid; -fx-border-width:1pt; -fx-border-color:black;"); 
        bottomVb.setSpacing(6);
+       topVb.setSpacing(5);
+       topVb.setPadding(new Insets(10, 30, 30, 30));
         bottomVb.setPadding(new Insets(10, 50, 50, 50));
        //elements
         
       
-       int is = 0;
+       
        for(Item i:iteml){
-           is++;
-           Text category = new Text("Item "+ is+ ": " +i.name);
+          
+           Text category = new Text(i.name);
             category.setFont(Font.font("Arial", FontWeight.BOLD, 20));
             rightVb.getChildren().add(category); 
-            System.out.println("sdf");
+            
        }
-       Image image = new Image("file:C:/res/simon.png");
+       Image image = new Image("file:C:/res/boss.png");
    
         ImageView iv1 = new ImageView();
         iv1.setImage(image);
@@ -117,7 +119,7 @@ import javafx.scene.text.Text;
          iv1.setSmooth(true);
          iv1.setCache(true);
 
-         textarea.setPrefColumnCount(14);
+         textarea.setPrefColumnCount(15);
          textarea.setPrefRowCount(32);
         Button saveButt = new Button("Enter");
         leftVb.getChildren().add(textarea);
