@@ -182,8 +182,8 @@ import javafx.scene.text.Text;
          iv1.setPreserveRatio(true);
          iv1.setSmooth(true);
          iv1.setCache(true);
-          iv2.setFitWidth(100);
-         iv2.setPreserveRatio(true);
+         iv2.setFitWidth(250);
+         iv2.setFitHeight(250);
          iv2.setSmooth(true);
          iv2.setCache(true);
 
@@ -205,9 +205,9 @@ import javafx.scene.text.Text;
          iv1.setSmooth(true);
          iv1.setCache(true);
         
-          center.setPrefWidth(400);
-           center.add(iv1, 0, 35, 1, 2); 
-           center.add(iv2, 20, 0, 1, 2); 
+          
+           center.add(iv1, 0, 10, 1, 2); 
+           center.add(iv2, 30, 10, 1, 2); 
        // Add VBoxes to Pane
        borderPane.setTop(topVb);
        borderPane.setLeft(leftVb);
