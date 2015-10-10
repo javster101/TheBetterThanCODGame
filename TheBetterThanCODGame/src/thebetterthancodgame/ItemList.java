@@ -11,5 +11,5 @@ package thebetterthancodgame;
  * @author Javier
  */
 public enum ItemList {
-    
+    Sword, Dagger, Negev, Mace, Glock18, MountainDew, Doritos, Airhorn, Medkit
 }
