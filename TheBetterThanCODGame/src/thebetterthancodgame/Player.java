@@ -49,7 +49,8 @@ public class Player {
         if(inv.currentItem.damage == 0 && inv.currentItem.healthRegen > 0)
         {
             heal((int) inv.currentItem.healthRegen);
-            inv.remove(item);
+            inv.items.remove(inv.currentItem);
+            inv.currentI--;
             inv.use(lastItem.name);
         }
         return true;

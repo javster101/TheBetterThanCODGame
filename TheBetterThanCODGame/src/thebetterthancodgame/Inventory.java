@@ -42,12 +42,10 @@ public class Inventory {
         return currentItem;
     }
     public boolean remove(String s){
-        int i = 0;
         for(Item item : items){
             if(item.name.equals(s)){
-                items.remove(i);
+                items.remove(item);
             }
-            i++;
         }
         return false;
     }
