@@ -50,11 +50,11 @@ import javafx.scene.text.Text;
      VBox rightVb = new VBox();
     VBox bottomVb = new VBox();
     VBox center = new VBox();
-     
+    
      @Override
      public void init(){ // Use the init method to configure widgets
        // Set fonts for all labels using CSS
-        
+         center.setAlignment(Pos.CENTER);
         final TextArea textarea = new TextArea();
        topLbl.setFont(Font.font("Verdana", FontWeight.BOLD, 18));
        leftLbl.setFont(Font.font("Verdana", FontWeight.BOLD, 18));
@@ -112,7 +112,11 @@ import javafx.scene.text.Text;
             textarea.appendText("\n" +text);
             
         });
-         
+          iv1.setFitWidth(220);
+         iv1.setPreserveRatio(true);
+         iv1.setSmooth(true);
+         iv1.setCache(true);
+
          textarea.setPrefColumnCount(14);
          textarea.setPrefRowCount(32);
         Button saveButt = new Button("Enter");
@@ -123,6 +127,7 @@ import javafx.scene.text.Text;
          iv1.setPreserveRatio(true);
          iv1.setSmooth(true);
          iv1.setCache(true);
+        
           center.setPrefWidth(400);
          center.getChildren().add(iv1);
        // Add VBoxes to Pane
@@ -152,6 +157,6 @@ import javafx.scene.text.Text;
      }
      public void processEvent(String msg){
          String m = msg;
-         String prefix = msg.
+         
      }
    }
