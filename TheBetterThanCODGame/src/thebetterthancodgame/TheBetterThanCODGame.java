@@ -213,7 +213,7 @@ import javafx.scene.text.Text;
          iv3.setCache(true);
          
 
-         textarea.setPrefColumnCount(19);
+         textarea.setPrefColumnCount(16);
          quests.setPrefRowCount(20);
          invarea.setPrefColumnCount(11);
          invarea.setPrefRowCount(25);
