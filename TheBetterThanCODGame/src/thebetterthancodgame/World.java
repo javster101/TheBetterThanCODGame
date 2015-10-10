@@ -121,4 +121,8 @@ public class World {
         }
         return false;
     }
+    public void respawn(Player p){
+        int tl = p.level;
+        p = new Player(tl);
+    }
 }

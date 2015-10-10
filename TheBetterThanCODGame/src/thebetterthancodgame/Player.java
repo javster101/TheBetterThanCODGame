@@ -101,8 +101,10 @@ public class Player {
             }else{
                 e.attack(this);
                 msg += "Enemy " + e.name + " hit you! \n";
-                if(health < 0)
+                if(health < 0){
                     msg += "You have died! \n";
+                    w.respawn(this);
+                }
             }
         }
         return msg;
