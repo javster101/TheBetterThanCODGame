@@ -43,9 +43,9 @@ import javafx.scene.text.Text;
       List<Item> iteml = inv.items;
    // Setup UI elements here
    
-    Label leftLbl = new Label("STATUS");
+    Label leftLbl = new Label("Status");
      Label currentItem = new Label("Current Item: " + "None");
-    Label rightLbl = new Label("INVENTORY");
+    Label rightLbl = new Label("Inventory");
      Label bottomLbl = new Label("Enter Command");
      Label labeld=new Label("Wear");
      Button centerBtn = new Button("Center");
@@ -75,6 +75,7 @@ import javafx.scene.text.Text;
             categorys.setFont(Font.font("Helvetica", FontWeight.BOLD, 20));
             topVb.getChildren().add(categorys); 
             currentItem.setFont(Font.font("Helvetica", FontWeight.BOLD, 20));
+            labeld.setFont(Font.font("Helvetica", FontWeight.BOLD, 20));
        // Configure the VBoxes
              rightVb.setAlignment(Pos.CENTER);
        topVb.setAlignment(Pos.CENTER);
@@ -149,7 +150,7 @@ import javafx.scene.text.Text;
          iv1.setSmooth(true);
          iv1.setCache(true);
 
-         textarea.setPrefColumnCount(15);
+         textarea.setPrefColumnCount(17);
          textarea.setPrefRowCount(32);
         Button saveButt = new Button("Enter");
         leftVb.getChildren().add(textarea);
