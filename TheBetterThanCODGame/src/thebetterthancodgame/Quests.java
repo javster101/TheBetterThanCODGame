@@ -18,7 +18,9 @@ public class Quests {
     int numbertoKill2 = 1;
     int numbertoKill3 = 1;
     
-    boolean firstTime = true;
+    boolean firstTime1 = true;
+    boolean firstTime2 = true;
+    boolean firstTime3 = true;
     
     String name1;
     String name2;
@@ -30,7 +32,7 @@ public class Quests {
         switch (((quest1+5) % 6))
         {
             case 0:
-                if(numbertoKill1 % 5 == 0 && !firstTime)
+                if(numbertoKill1 % 5 == 0 && !firstTime1)
                 {
                     numbertoKill1 += 5;
                 }else{
@@ -40,7 +42,7 @@ public class Quests {
                 break;
             case 1:
                 name1 = "Sneaky Beaver";
-                firstTime = false;
+                firstTime1 = false;
                 break;
             case 2:
                 name1 = "Justin Beaver";
@@ -64,7 +66,7 @@ public class Quests {
                 name2 = "Beaver";
                 break;
             case 1:
-                if(numbertoKill2 % 5 == 0 && !firstTime)
+                if(numbertoKill2 % 5 == 0 && !firstTime2)
                 {
                     numbertoKill2 += 5;
                 }else{
@@ -74,7 +76,7 @@ public class Quests {
                 break;
             case 2:
                 name2 = "Justin Beaver";
-                firstTime = false;
+                firstTime2 = false;
                 break;
             case 3:
                 name2 = "Sneaky Beaky CT";
@@ -98,7 +100,7 @@ public class Quests {
                 name3 = "Sneaky Beaver";
                 break;
             case 2:
-                if(numbertoKill3 % 5 == 0 && !firstTime)
+                if(numbertoKill3 % 5 == 0 && !firstTime3)
                 {
                     numbertoKill3 += 5;
                 }else{
@@ -108,7 +110,7 @@ public class Quests {
                 break;
             case 3:
                 name3 = "Sneaky Beaky CT";
-                firstTime = false;
+                firstTime3 = false;
                 break;
             case 4:
                 name3 = "Stalin";
