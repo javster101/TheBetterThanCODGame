@@ -19,9 +19,11 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
    import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.StackPane;
    import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
+import javafx.scene.shape.Rectangle;
    import javafx.scene.text.Font;
    import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
@@ -39,6 +41,7 @@ import javafx.scene.text.Text;
        boolean n1 = inv.add(new Item(ItemList.Airhorn));
         boolean n2 = inv.add(new Item(ItemList.Glock18));
          boolean n3 = inv.add(new Item(ItemList.MountainDew)); 
+         boolean n5 = inv.add(new Item(ItemList.MountainDew)); 
           boolean n4 = inv.add(new Item(ItemList.Glock18));
         
       List<Item> iteml = inv.items;
@@ -66,9 +69,9 @@ import javafx.scene.text.Text;
          texturepath.set("file:C:/res/blank.png");
          HealthBar health = new HealthBar(Color.LIMEGREEN);
          HealthBar wearbar= new HealthBar(Color.AQUA);
-          center.setHgap(10);
-    center.setVgap(10);
-    center.setPadding(new Insets(0, 10, 0, 10));
+          center.setHgap(0);
+    center.setVgap(0);
+    center.setPadding(new Insets(0, 5, 0, 5));
          topVb.getChildren().add(topLbl);
         final TextArea textarea = new TextArea();
         final TextArea invarea = new TextArea();
@@ -126,7 +129,9 @@ import javafx.scene.text.Text;
         );
         ImageView iv1 = new ImageView();
         ImageView iv2 = new ImageView();
+        ImageView iv3 = new ImageView();
         iv1.setImage(image);
+        iv3.setImage(new Image("file:C:/res/blank.png"));
          iv2.setImage(imageenemy);
        // iv1.fitWidthProperty().bind(center.widthProperty());
   //  iv1.fitHeightProperty().bind(center.heightProperty());
@@ -169,8 +174,11 @@ import javafx.scene.text.Text;
             }else{
             texturepath.set("file:C:/res/"+e.texNameType);
             }
+            
             Image sdi = new Image(texturepath.get());
+            Image sdis = new Image("file:C:/res/"+inv.currentItem.filePath);
             iv2.setImage(sdi);
+            iv3.setImage(sdis);
             invarea.clear();
             for(Item i:iteml){
           
@@ -182,6 +190,10 @@ import javafx.scene.text.Text;
             
              
         });
+        int size=3;
+       
+          
+    
           iv1.setFitWidth(290);
          iv1.setPreserveRatio(true);
          iv1.setSmooth(true);
@@ -190,10 +202,15 @@ import javafx.scene.text.Text;
          iv2.setFitHeight(280);
          iv2.setSmooth(true);
          iv2.setCache(true);
+         iv3.setFitWidth(200);
+         iv3.setFitHeight(380);
+         iv3.setSmooth(true);
+         iv3.setCache(true);
+         
 
          textarea.setPrefColumnCount(19);
          
-         invarea.setPrefColumnCount(13);
+         invarea.setPrefColumnCount(11);
          invarea.setPrefRowCount(25);
          textarea.setPrefRowCount(32);
         Button saveButt = new Button("Enter");
@@ -210,8 +227,10 @@ import javafx.scene.text.Text;
          iv1.setCache(true);
         
           
-           center.add(iv1, 0, 10, 1, 2); 
-           center.add(iv2, 30, 10, 1, 2); 
+          center.add(iv1, 1, 10, 1, 2); 
+          
+           center.add(iv2, 30, 10, 1, 2);
+           center.add(iv3, 15, 10, 1, 2);
        // Add VBoxes to Pane
        borderPane.setTop(topVb);
        borderPane.setLeft(leftVb);
