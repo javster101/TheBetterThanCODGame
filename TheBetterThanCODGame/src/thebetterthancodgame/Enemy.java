@@ -43,6 +43,7 @@ public class Enemy {
                 break;
             case SNEAKYBEAVER:
                 texNameType = "sneakybeaver.png";
+                break;
             case SNEAKYBEAKYCT:
                 texNameType = "sneaky beaky ct.png";
                 break;
