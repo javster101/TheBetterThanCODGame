@@ -14,6 +14,9 @@ import javafx.scene.image.Image;
  * @author Javier
  */
 public class Player {
+    int quest1killed = 0;
+    int quest2killed = 0;
+    int quest3killed = 0;
     public Inventory inv;
     public double health = 15;
     public double maxHealth = 15;
@@ -22,6 +25,7 @@ public class Player {
     public Vector2f pos;
     public int xp;
     public Random accuracy = new Random();
+    Quests quest = new Quests();
     public Player(int level){
         this.level = level;
         inv = new Inventory(20);
@@ -89,6 +93,33 @@ public class Player {
                 msg += "Enemy " + e.name + " Killed!\n";
                 xp += e.xpGain;
                 w.worldmap[(int)pos.x][(int)pos.y].e = new Enemy(0,0,EnemyType.BLANK,"",0,0);
+                if(e.name.equals(quest.name1))
+                {
+                    quest1killed++;
+                }
+                if(e.name.equals(quest.name2))
+                {
+                    quest2killed++;
+                }
+                if(e.name.equals(quest.name3))
+                {
+                    quest3killed++;
+                }
+                if(quest1killed == quest.numbertoKill1)
+                {
+                    quest.quest1++;
+                    msg += "Quest 1 completed. \n";
+                }
+                if(quest2killed == quest.numbertoKill2)
+                {
+                    quest.quest2++;
+                    msg += "Quest 2 completed. \n";
+                }
+                if(quest3killed == quest.numbertoKill3)
+                {
+                    quest.quest3++;
+                    msg += "Quest 3 completed. \n";
+                }
                 try{
                     msg += "There is a " + t.i.name + " on the floor.\n";
                 }catch(Exception ex){
