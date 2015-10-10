@@ -20,7 +20,7 @@ public class Process {
              return world.p.attack(world);
          }
          if("use".equals(words[0]) /*|| ("take".equals(words[0]) && "out".equals(words[1]))*/){
-             if(world.p.inv.use(words[1])/* | world.p.inv.use(words[2])*/){
+             if(world.p.use(words[1])/* | world.p.inv.use(words[2])*/){
                 return "Now using " + words[1];
              }else{
                 return "You don't have this"; 
