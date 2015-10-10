@@ -67,6 +67,7 @@ public class Player {
             Enemy e = t.e;
             if(accuracy.nextInt() % 100 <= inv.currentItem.accuracy)
             {
+                inv.currentItem.wear--;
                 e.health -= inv.currentItem.damage;
                 msg += "Hit for " + inv.currentItem.damage + " damage! \n";
                 inv.currentItem.xp += this.level*5;
@@ -77,8 +78,14 @@ public class Player {
             {
                 msg += "Missed! \n";
             }
+            if(inv.currentItem.wear == 0)
+            {
+                msg += inv.currentItem.name + " was broken. \n";
+                inv.remove(inv.currentItem.name);
+                inv.currentItem = null;
+            }
             if(e.health < 0){
-                msg += "Enemy " + e.name + "Killed!\n";
+                msg += "Enemy " + e.name + " Killed!\n";
                 xp += e.xpGain;
                 if(xp > 10 * level){
                     levelUp();
