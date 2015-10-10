@@ -26,11 +26,11 @@ public class World {
                 int chanceofblank = r.nextInt()%6;
                 int level = Math.max(Math.abs(j-50), Math.abs(k-50));
                 int enTypeGen = r.nextInt()%12;
-                Enemy e = new Enemy(0,0,EnemyType.BLANK,0,0);
+                Enemy e = new Enemy(0,0,EnemyType.BLANK,"",0,0);
                 worldmap[j][k] = new Area(new Vector2f(j,k), level + levelDev,e);
 
                 if(chanceofblank == 2){
-                    worldmap[j][k].e = new Enemy(0,0,EnemyType.BLANK,0,0);
+                    worldmap[j][k].e = new Enemy(0,0,EnemyType.BLANK,"",0,0);
                     continue;
                 }
                 switch(enTypeGen){
@@ -39,20 +39,20 @@ public class World {
                     case 2:
                     case 8:
                     case 11:
-                        e = new Enemy(level+levelDev, level, EnemyType.BEAVER,10,1);
+                        e = new Enemy(level+levelDev, level, EnemyType.BEAVER,"Beaver",10*(level / 2),1);
                         break;
                     case 3:
                     case 7:
-                        e = new Enemy(level+levelDev, level, EnemyType.SNEAKYBEAVER,10,1);
+                        e = new Enemy(level+levelDev, level, EnemyType.SNEAKYBEAVER,"Sneaky Beaver",10*(level / 2),1);
                         break;
                     case 4:
                     case 5:
                     case 6:
                     case 9:
-                        e = new Enemy(level+levelDev, level, EnemyType.JUSTINBEAVER,10,1);
+                        e = new Enemy(level+levelDev, level, EnemyType.JUSTINBEAVER,"Justin Beaver",10*(level / 2),1);
                         break;
                     case 10:
-                        e = new Enemy(level+levelDev, level, EnemyType.SNEAKYBEAKYCT,10,3);
+                        e = new Enemy(level+levelDev, level, EnemyType.SNEAKYBEAKYCT,"Sneaky Beaky CT",10 * (level / 2),3);
                         break;
                 }
                 System.out.println(e.e);
@@ -60,5 +60,15 @@ public class World {
                 
             }
         }
+    }
+    public Area getArea(Vector2f p){
+        return worldmap[(int)p.x][(int)p.y];
+    }
+    public String printInfo(Vector2f s){
+        String msg = "";
+        if(worldmap[(int)s.x][(int)s.y].e.e == EnemyType.BLANK){
+            msg += "There are no enemies\n";
+        }
+        return msg;
     }
 }

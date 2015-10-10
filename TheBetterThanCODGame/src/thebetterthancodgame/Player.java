@@ -18,18 +18,49 @@ public class Player {
     public int level;
     public Image i;
     public Vector2f pos;
+    public int xp;
     public Player(int level){
         this.level = level;
         inv = new Inventory(20);
-        this.i = i;
+
     }
     public void setPos(Vector2f f){
         pos = f;
     }
+    public Vector2f getPos(){
+        return pos;
+    }
     public void damage(int i){
         health -= i;
     }
-    public void attack(){
-        
+    public void heal(int i){
+        health += i;
+    }
+    public void levelUp(){
+        level++;
+        health += 5;
+    }
+    public String attack(World w){
+        String msg = "";
+        Area t = w.worldmap[(int)pos.x][(int)pos.y];
+        if(t.e.e == EnemyType.BLANK){
+            return "No enemy!";
+        }else{
+            Enemy e = t.e;
+            e.health -= inv.currentItem.damage;
+            msg += "Hit for " + inv.currentItem.damage + " damage! \n";
+            if(e.health < 0){
+                msg += "Enemy " + e.name + "Killed!\n";
+                xp += e.xpGain;
+                if(xp > 10 * level){
+                    levelUp();
+                    msg += "LEVEL UP \n";
+                }
+            }else{
+                e.attack(this);
+                msg += "Enemy " + e.name + "hit you! \n";
+            }
+        }
+        return msg;
     }
 }

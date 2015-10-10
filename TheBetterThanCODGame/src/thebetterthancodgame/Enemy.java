@@ -18,9 +18,10 @@ public class Enemy {
     public int level;
     public Image i;
     public EnemyType e;
+    public String name;
     public int xpGain;
     public int accuracy;
-    public Enemy(double health, int level, EnemyType e, int xpGain, int accuracy){
+    public Enemy(double health, int level, EnemyType e, String name, int xpGain, int accuracy){
         this.health = health;
         this.level = level;
         this.e = e; 
