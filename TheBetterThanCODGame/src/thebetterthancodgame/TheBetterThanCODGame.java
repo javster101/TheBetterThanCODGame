@@ -108,11 +108,21 @@ import javafx.scene.text.Text;
         bottomVb.setPadding(new Insets(10, 50, 50, 50));
        //elements
         
-     
+     for(Item i:iteml){
+          
+         
+            invarea.appendText("\n"+ i.name);
+            
+            }
        
        Image image = new Image("file:C:/res/simon.png");
-       Image imageenemy = new Image("file:C:/res/boss.png");
-   
+       Image imageenemy = new Image("file:C:/res/plank.png");
+   invarea.setStyle(""
+        + "-fx-font-size: 20px;"
+        + "-fx-font-style: italic;"
+        + "-fx-font-weight: bold;"
+        + "-fx-font-family: helvetica;"
+        );
         ImageView iv1 = new ImageView();
         ImageView iv2 = new ImageView();
         iv1.setImage(image);
@@ -166,7 +176,7 @@ import javafx.scene.text.Text;
          iv2.setSmooth(true);
          iv2.setCache(true);
 
-         textarea.setPrefColumnCount(17);
+         textarea.setPrefColumnCount(19);
          
          invarea.setPrefColumnCount(13);
          invarea.setPrefRowCount(25);
