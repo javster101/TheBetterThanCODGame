@@ -19,6 +19,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
    import javafx.scene.layout.BorderPane;
    import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
    import javafx.scene.text.Font;
    import javafx.scene.text.FontWeight;
@@ -46,6 +47,7 @@ import javafx.scene.text.Text;
      Label currentItem = new Label("Current Item: " + "None");
     Label rightLbl = new Label("INVENTORY");
      Label bottomLbl = new Label("Enter Command");
+     Label labeld=new Label("Wear");
      Button centerBtn = new Button("Center");
     
        
@@ -60,7 +62,8 @@ import javafx.scene.text.Text;
      @Override
      public void init(){ // Use the init method to configure widgets
        // Set fonts for all labels using CSS
-         HealthBar health = new HealthBar();
+         HealthBar health = new HealthBar(Color.LIMEGREEN);
+         HealthBar wearbar= new HealthBar(Color.AQUA);
          center.setAlignment(Pos.CENTER);
          topVb.getChildren().add(topLbl);
         final TextArea textarea = new TextArea();
@@ -73,17 +76,20 @@ import javafx.scene.text.Text;
             topVb.getChildren().add(categorys); 
             currentItem.setFont(Font.font("Helvetica", FontWeight.BOLD, 20));
        // Configure the VBoxes
-      
+             rightVb.setAlignment(Pos.CENTER);
        topVb.setAlignment(Pos.CENTER);
        topVb.setStyle("-fx-border-stylel:solid; -fx-border-width:1pt; -fx-border-color:black;");
        rightVb.getChildren().add(currentItem);
+       
+       rightVb.getChildren().add(labeld);
+       rightVb.getChildren().add(wearbar);
        leftVb.getChildren().add(leftLbl);
       leftVb.setAlignment(Pos.CENTER);
       
        leftVb.setStyle("-fx-border-stylel:solid; -fx-border-width:1pt; -fx-border-color:black; ");    
        
        rightVb.getChildren().add(rightLbl);
-       rightVb.setAlignment(Pos.CENTER);
+      
        rightVb.setStyle("-fx-border-stylel:solid; -fx-border-width:1pt; -fx-border-color:black;padding:10px;");    
    rightVb.setPadding(new Insets(10, 50, 50, 50));
     rightVb.setSpacing(10);
@@ -132,6 +138,7 @@ import javafx.scene.text.Text;
                   nnn.set("Current Item: " + "None");
             }else{
             nnn.set("Current Item: " + inv.currentItem.name);
+            wearbar.setValue(inv.currentItem.wear, inv.currentItem.maxWear);
             }
             currentItem.textProperty().bind(nnn);
             
