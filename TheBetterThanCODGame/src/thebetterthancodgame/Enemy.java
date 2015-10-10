@@ -56,6 +56,9 @@ public class Enemy {
             case STALIN:
                 texNameType = "stalin.png";
                 break;
+            case TRUMP:
+                texNameType = "trump.png";
+                break;
         }
     }
     public String attack(Player p){
@@ -91,6 +94,10 @@ public class Enemy {
             case BOSS:
                 damage = 20;
                 message = "The Boss has hit you for ";
+                break;
+            case TRUMP:
+                damage = 4*level;
+                message = "Donald Trump has hit you for ";
                 break;
         }
         
