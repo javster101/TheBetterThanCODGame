@@ -52,7 +52,7 @@ public class Process {
              String toReturn = "";
              try{
                 toReturn = world.printInfo(world.p.pos);
-             }catch(Exception e){
+             }catch(ArrayIndexOutOfBoundsException e){
                  toReturn = "Too far from center!";
                  if(world.p.pos.x > 98){
                      world.p.pos.x =90;
@@ -63,7 +63,7 @@ public class Process {
                  if(world.p.pos.y > 98){
                      world.p.pos.y =90;
                  }
-                 if(world.p.pos.y > 1){
+                 if(world.p.pos.y < 1){
                      world.p.pos.y = 1;
                  }
              }

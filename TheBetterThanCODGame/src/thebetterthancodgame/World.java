@@ -7,7 +7,6 @@
 package thebetterthancodgame;
 
 import java.util.Random;
-import javafx.scene.image.Image;
 
 /**
  *
@@ -28,8 +27,9 @@ public class World {
                 int enTypeGen = r.nextInt()%12;
                 Enemy e = new Enemy(0,0,EnemyType.BLANK,"",0,0);
                 worldmap[j][k] = new Area(new Vector2f(j,k), level + levelDev,e);
+                worldmap[j][k].i = new Item(ItemList.Blank); 
                 if(level > 30 && enTypeGen < 6){
-                    worldmap[j][k].i = new Item(ItemList.Medkit);                  
+                    worldmap[j][k].i = new Item(ItemList.Medkit);                    
                 }
                 if(level > 2 && enTypeGen < 3){
                     worldmap[j][k].i = new Item(ItemList.Dagger);                  
@@ -52,7 +52,6 @@ public class World {
                 if(level > 30 && enTypeGen < 1){
                     worldmap[j][k].i = new Item(ItemList.Negev);                  
                 }
-                
                 if(chanceofblank == 2){
                     worldmap[j][k].e = new Enemy(0,0,EnemyType.BLANK,"",0,0);
                     continue;

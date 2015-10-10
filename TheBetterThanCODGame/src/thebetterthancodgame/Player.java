@@ -25,7 +25,7 @@ public class Player {
     public Player(int level){
         this.level = level;
         inv = new Inventory(20);
-
+        pos = new Vector2f(50,50);
     }
     public void setPos(Vector2f f){
         pos = f;
