@@ -26,7 +26,7 @@ public class World {
                 int levelDev = (r.nextInt() % 3)-1;
                 int chanceofblank = r.nextInt()%6;
                 int level = Math.max(Math.abs(j-50), Math.abs(k-50));
-                int enTypeGen = r.nextInt()%12;
+                int enTypeGen = r.nextInt()%14;
                 Enemy e = new Enemy(0,0,EnemyType.BLANK,"",0,0);
                 worldmap[j][k] = new Area(new Vector2f(j,k), level + levelDev,e);
                 worldmap[j][k].i = new Item(ItemList.Blank); 
@@ -79,6 +79,10 @@ public class World {
                         break;
                     case 10:
                         e = new Enemy(level+levelDev, level, EnemyType.SNEAKYBEAKYCT,"Sneaky Beaky CT",10 * (level / 2),3);
+                        break;
+                    case 12:
+                    case 13:
+                        e = new Enemy(level+levelDev, level, EnemyType.TRUMP,"Donald Trump",10 * (level / 2),1);
                         break;
                 }
                 if(level > 30 && (enTypeGen  < 3)){
