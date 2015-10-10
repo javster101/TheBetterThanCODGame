@@ -17,7 +17,7 @@ public class Player {
     public Inventory inv;
     public double health = 15;
     public double maxHealth = 15;
-    public int level;
+    public int level = 1;
     public Image i;
     public Vector2f pos;
     public int xp;
@@ -56,7 +56,7 @@ public class Player {
     }
     public void levelUp(){
         level++;
-        health += 5;
+        maxHealth += 5;
     }
     public String attack(World w){
         String msg = "";
