@@ -15,6 +15,7 @@ public class Item {
     double healthRegen;
     int accuracy;
     int wear;
+    int maxWear;
     int level = 1;
     int xp = 0;
     ItemList names;
@@ -35,55 +36,55 @@ public class Item {
             case Airhorn:
                 damage = 1000;
                 level = 12;
-                wear = -1;
+                maxWear = -1;
                 accuracy = 95;
                 name = "Airhorn";
                 break;
             case Negev:
                 damage = 50;
                 level = 8;
-                wear = 55;
+                maxWear = 55;
                 accuracy = 75;
                 name = "Negev";
                 break;
             case Glock18:
                 damage = 20;
                 level = 6;
-                wear = 20;
+                maxWear = 20;
                 accuracy = 85;
                 name = "Glock";
                 break;
             case Mace:
                 damage = 10;
                 level = 4;
-                wear = 15;
+                maxWear = 15;
                 accuracy = 90;
                 name = "Mace";
                 break;
             case BowandArrow:
                 damage = 9;
                 level = 3;
-                wear = 15;
+                maxWear = 15;
                 accuracy = 85;
                 name = "BowandArrow";
                 break;
             case Sword:
                 damage = 8;
                 level = 2;
-                wear = 15;
+                maxWear = 15;
                 accuracy = 100;
                 name = "Sword";
                 break;
             case Dagger:
                 damage = 3;
                 level = 1;
-                wear = 20;
+                maxWear = 20;
                 accuracy = 90;
                 name = "Dagger";
                 break;
             default:
                 level = 1;
-                wear = 1;
+                maxWear = 1;
                 accuracy = 100;
                 damage = 0;
                 break;
@@ -115,6 +116,8 @@ public class Item {
                 healthRegen = 0;
                 break;
         }
+        
+        wear = maxWear;
     }
     
     public boolean enchant(int playerLevel)
