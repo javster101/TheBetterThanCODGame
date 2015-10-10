@@ -18,6 +18,8 @@ public class Quests {
     int numbertoKill2 = 1;
     int numbertoKill3 = 1;
     
+    boolean firstTime = true;
+    
     String name1;
     String name2;
     String name3;
@@ -28,7 +30,7 @@ public class Quests {
         switch (((quest1+5) % 6))
         {
             case 0:
-                if(numbertoKill1 % 5 == 0)
+                if(numbertoKill1 % 5 == 0 && !firstTime)
                 {
                     numbertoKill1 += 5;
                 }else{
@@ -38,6 +40,7 @@ public class Quests {
                 break;
             case 1:
                 name1 = "Sneaky Beaver";
+                firstTime = false;
                 break;
             case 2:
                 name1 = "Justin Beaver";
@@ -61,7 +64,7 @@ public class Quests {
                 name2 = "Beaver";
                 break;
             case 1:
-                if(numbertoKill2 % 5 == 0)
+                if(numbertoKill2 % 5 == 0 && !firstTime)
                 {
                     numbertoKill2 += 5;
                 }else{
@@ -71,6 +74,7 @@ public class Quests {
                 break;
             case 2:
                 name2 = "Justin Beaver";
+                firstTime = false;
                 break;
             case 3:
                 name2 = "Sneaky Beaky CT";
@@ -94,7 +98,7 @@ public class Quests {
                 name3 = "Sneaky Beaver";
                 break;
             case 2:
-                if(numbertoKill3 % 5 == 0)
+                if(numbertoKill3 % 5 == 0 && !firstTime)
                 {
                     numbertoKill3 += 5;
                 }else{
@@ -104,6 +108,7 @@ public class Quests {
                 break;
             case 3:
                 name3 = "Sneaky Beaky CT";
+                firstTime = false;
                 break;
             case 4:
                 name3 = "Stalin";
