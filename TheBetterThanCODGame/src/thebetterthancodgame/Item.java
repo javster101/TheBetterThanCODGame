@@ -12,7 +12,8 @@ package thebetterthancodgame;
  */
 public class Item {
     double damage;
-    double healthRegen; 
+    double healthRegen;
+    int accuracy;
     int wear;
     int level = 1;
     int xp = 0;
@@ -24,6 +25,7 @@ public class Item {
     {
         this.names = names;
         set(names);
+        defined = true;
     }
     
     public final void set(ItemList names)
@@ -32,29 +34,41 @@ public class Item {
         {
             case Airhorn:
                 damage = 1000;
+                level = 12;
+                accuracy = 95;
                 name = "Airhorn";
                 break;
             case Negev:
                 damage = 500;
+                level = 8;
+                accuracy = 75;
                 name = "Negev";
                 break;
             case Glock18:
                 damage = 200;
+                level = 6;
+                accuracy = 85;
                 name = "Glock 18";
                 break;
             case Mace:
                 damage = 100;
+                level = 4;
+                accuracy = 90;
                 name = "Mace";
                 break;
             case Sword:
                 damage = 50;
+                level = 2;
+                accuracy = 100;
                 name = "Sword";
                 break;
             case Dagger:
                 damage = 10;
+                level = 1;
                 name = "Dagger";
                 break;
             default:
+                accuracy = 100;
                 damage = 0;
                 break;
         }
@@ -62,7 +76,7 @@ public class Item {
         switch (names)
         {
             case Airhorn:
-                healthRegen = 100;
+                healthRegen = 50;
                 name = "Airhorn";
                 break;
             case Doritos:
@@ -87,16 +101,21 @@ public class Item {
         }
     }
     
-    public void enchant()
+    public boolean enchant(int playerLevel)
     {
-        name = "Enchanted " + name;
-        damage = damage * 1.5;
-        healthRegen = healthRegen * 1.25;
+        if(this.level <= playerLevel)
+        {
+            name = "Enchanted " + name;
+            damage = damage * 1.5;
+            healthRegen = healthRegen * 1.25;
+            this.level++;
+            return true;
+        }
+        else 
+        {
+            return false;
+        }
     }
-    
-    public void use()
-    {
-        
-}
+
 
 }
