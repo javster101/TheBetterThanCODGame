@@ -31,7 +31,7 @@ public class Inventory {
     }
     public boolean use(String s){
         for(Item item : items){
-            if(item.name.equals(s)){
+            if(item.name.toLowerCase().equals(s.toLowerCase())){
                 currentItem = item;
                 return true;
             }

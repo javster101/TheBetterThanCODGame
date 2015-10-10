@@ -17,5 +17,6 @@ public class Area {
     public Area(Vector2f p, int l, Enemy e){
         this.pos = p;
         level = l;
+        this.e = e;
     }
 }

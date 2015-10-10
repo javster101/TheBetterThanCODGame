@@ -38,7 +38,7 @@ import javafx.scene.text.Text;
         
       List<Item> iteml = inv.items;
    // Setup UI elements here
-    Label topLbl = new Label("Level: "+player.level+ " Location: "+player.pos.x+","+player.pos.y);
+   
     Label leftLbl = new Label("STATUS");
     Label rightLbl = new Label("INVENTORY");
      Label bottomLbl = new Label("Enter Command");
@@ -50,6 +50,7 @@ import javafx.scene.text.Text;
      VBox rightVb = new VBox();
     VBox bottomVb = new VBox();
     VBox center = new VBox();
+    Label topLbl = new Label();
     
      @Override
      public void init(){ // Use the init method to configure widgets
@@ -109,10 +110,11 @@ import javafx.scene.text.Text;
         fNameFld.setOnAction((event) -> {
             
             String text = fNameFld.getText();
-            processEvent(text);
             fNameFld.clear();
             textarea.appendText("\n" +text);
-            
+            textarea.appendText("\n" +Process.processEvent(text,world));
+             topLbl = new Label("Level: "+player.level+ " Location: "+player.pos.x+","+player.pos.y);
+             topVb.getChildren().add(topLbl);
         });
           iv1.setFitWidth(220);
          iv1.setPreserveRatio(true);
@@ -157,51 +159,5 @@ import javafx.scene.text.Text;
       primaryStage.setScene(new Scene(borderPane, 300, 250));
        primaryStage.show();
      }
-<<<<<<< HEAD
-     public String processEvent(String msg){
-         String m = msg.trim();
-         String[] words = m.split(" ");
-         int argAm = words.length;
-         System.out.println(argAm);
-         if("attack".equals(words[0]) || "fight".equals(words[0])){
-             return world.p.attack(world);
-         }
-         if("use".equals(words[0]) || ("take".equals(words[0]) && "out".equals(words[1]))){
-             if(world.p.inv.use(words[1]) | world.p.inv.use(words[2])){
-                                 
-             }else{
-                return "You don't have this"; 
-             }
-         }
-         if("go".equals(words[0]) || "move".equals(words[0]) || "head".equals(words[0]) || "walk".equals(words[0])){
-             switch(words[1]){
-                case "north":
-                case "up":
-                case "forward":
-                    world.p.pos.y += 1;
-                    break;
-                case "left":
-                case "west":
-                    world.p.pos.x -= 1;
-                    break;
-                case "south":
-                case "down":
-                case "back":
-                case "backwards":
-                    world.p.pos.y -= 1;
-                    break;
-                case "right":
-                case "east":
-                    world.p.pos.x += 1;
-                    break;
-             }
-             world.printInfo(world.p.pos);
-         }
-         return "Command not found";
-=======
-     public void processEvent(String msg){
-         String m = msg;
-         
->>>>>>> origin/master
-     }
+     
    }
