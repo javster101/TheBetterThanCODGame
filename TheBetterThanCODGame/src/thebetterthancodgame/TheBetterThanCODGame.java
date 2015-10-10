@@ -155,10 +155,14 @@ import javafx.scene.text.Text;
                   nnn.set("Current Item: " + "None");
             }else{
             nnn.set("Current Item: " + inv.currentItem.name);
+            if(inv.currentItem.maxWear < 0){
+                wearbar.setValue(1, 1);
+            }else{
             wearbar.setValue(inv.currentItem.wear, inv.currentItem.maxWear);
             }
+            }
             Vector2f location = world.p.pos;
-                    
+            
             Enemy e = world.worldmap[(int)location.x][(int)location.y].e;
             if(e == null){
                  texturepath.set("file:C:/res/blank.png");
@@ -183,7 +187,7 @@ import javafx.scene.text.Text;
          iv1.setSmooth(true);
          iv1.setCache(true);
          iv2.setFitWidth(250);
-         iv2.setFitHeight(250);
+         iv2.setFitHeight(280);
          iv2.setSmooth(true);
          iv2.setCache(true);
 
