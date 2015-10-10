@@ -19,6 +19,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
    import javafx.scene.layout.BorderPane;
    import javafx.scene.layout.VBox;
+import javafx.scene.shape.Line;
    import javafx.scene.text.Font;
    import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
@@ -45,7 +46,7 @@ import javafx.scene.text.Text;
     Label rightLbl = new Label("INVENTORY");
      Label bottomLbl = new Label("Enter Command");
      Button centerBtn = new Button("Center");
-     
+    
        
      // Using a VBox (Veritcal Box) to hold UI elements
      VBox topVb = new VBox();
@@ -58,7 +59,7 @@ import javafx.scene.text.Text;
      @Override
      public void init(){ // Use the init method to configure widgets
        // Set fonts for all labels using CSS
-         
+         HealthBar health = new HealthBar();
          center.setAlignment(Pos.CENTER);
          topVb.getChildren().add(topLbl);
         final TextArea textarea = new TextArea();
@@ -92,9 +93,7 @@ import javafx.scene.text.Text;
        topVb.setPadding(new Insets(10, 30, 30, 30));
         bottomVb.setPadding(new Insets(10, 50, 50, 50));
        //elements
-        
-      
-       
+     
        for(Item i:iteml){
           
            Text category = new Text(i.name);
@@ -105,7 +104,7 @@ import javafx.scene.text.Text;
        Image image = new Image("file:C:/res/simon.png");
    
         ImageView iv1 = new ImageView();
-        iv1.setImage(image);
+        //iv1.setImage(image);
        // iv1.fitWidthProperty().bind(center.widthProperty());
   //  iv1.fitHeightProperty().bind(center.heightProperty());
        Label fNameLbl = new Label("Console");
@@ -120,6 +119,7 @@ import javafx.scene.text.Text;
             textarea.appendText("\n" +Process.processEvent(text,world));
             String ns = "Level: "+player.level+ " Location: "+player.pos.x+","+player.pos.y;
             StringProperty nn= new SimpleStringProperty();
+            health.setValue(player.health,200);
             nn.set(ns);
             topLbl.textProperty().bind(nn);
              
@@ -135,6 +135,10 @@ import javafx.scene.text.Text;
         leftVb.getChildren().add(textarea);
         bottomVb.getChildren().add(fNameLbl);
          bottomVb.getChildren().add(fNameFld);
+         
+         
+         topVb.getChildren().add(health);  
+  topVb.setMargin( health, new Insets( 6,0,0,6));  
          iv1.setFitWidth(400);
          iv1.setPreserveRatio(true);
          iv1.setSmooth(true);
