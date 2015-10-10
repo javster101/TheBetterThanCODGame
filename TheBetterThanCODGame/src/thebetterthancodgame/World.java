@@ -61,7 +61,7 @@ public class World {
             }
         }
     }
-    public Area getArea(Vector2f p){
+    public Area getArea(Vector2f p) throws ArrayIndexOutOfBoundsException{
         return worldmap[(int)p.x][(int)p.y];
     }
     public String printInfo(Vector2f s){

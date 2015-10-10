@@ -13,6 +13,7 @@ package thebetterthancodgame;
 public class Area {
     Enemy e;
     Vector2f pos;
+    Item i;
     int level;
     public Area(Vector2f p, int l, Enemy e){
         this.pos = p;

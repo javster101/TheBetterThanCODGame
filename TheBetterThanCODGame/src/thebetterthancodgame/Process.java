@@ -21,7 +21,7 @@ public class Process {
          }
          if("use".equals(words[0]) /*|| ("take".equals(words[0]) && "out".equals(words[1]))*/){
              if(world.p.inv.use(words[1])/* | world.p.inv.use(words[2])*/){
-                                 
+                return "Now using " + words[1];
              }else{
                 return "You don't have this"; 
              }
@@ -46,9 +46,29 @@ public class Process {
                 case "right":
                 case "east":
                     world.p.pos.x += 1;
+                    
                     break;
              }
-             return world.printInfo(world.p.pos);
+             String toReturn = "";
+             try{
+                toReturn = world.printInfo(world.p.pos);
+             }catch(Exception e){
+                 toReturn = "Too far from center!";
+                 if(world.p.pos.x > 98){
+                     world.p.pos.x =90;
+                 }
+                 if(world.p.pos.x < 1){
+                     world.p.pos.x =1;
+                 }
+                 if(world.p.pos.y > 98){
+                     world.p.pos.y =90;
+                 }
+                 if(world.p.pos.y > 1){
+                     world.p.pos.y = 1;
+                 }
+             }
+             return toReturn;
+                     
          }
          
          return "Command not found";

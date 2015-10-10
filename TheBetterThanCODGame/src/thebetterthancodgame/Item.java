@@ -39,31 +39,31 @@ public class Item {
                 name = "Airhorn";
                 break;
             case Negev:
-                damage = 500;
+                damage = 50;
                 level = 8;
                 accuracy = 75;
                 name = "Negev";
                 break;
             case Glock18:
-                damage = 200;
+                damage = 20;
                 level = 6;
                 accuracy = 85;
-                name = "Glock 18";
+                name = "Glock";
                 break;
             case Mace:
-                damage = 100;
+                damage = 10;
                 level = 4;
                 accuracy = 90;
                 name = "Mace";
                 break;
             case Sword:
-                damage = 50;
+                damage = 8;
                 level = 2;
                 accuracy = 100;
                 name = "Sword";
                 break;
             case Dagger:
-                damage = 10;
+                damage = 3;
                 level = 1;
                 name = "Dagger";
                 break;
