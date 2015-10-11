@@ -85,6 +85,17 @@ public class Process {
                 return "You don't have this anyway"; 
              }
          }
+         if("enchant".equals(words[0]))
+         {
+             int ret = world.p.enchant(words[1]);
+             if(ret == -2){
+                 return "You do not have a high enough level";
+             }else if(ret == -1){
+                 return "You do not have this item";
+             }else{
+                 return words[1] + " enchanted";
+             }
+         }
          return "Command not found";
      }
 }

@@ -60,7 +60,7 @@ public class Quests {
         
         msg+= "Quest 1: Kill " + numbertoKill1 + " " + name1 + "s \n";
         
-        switch (((quest1+5) % 6))
+        switch (((quest2+5) % 6))
         {
             case 0:
                 name2 = "Beaver";

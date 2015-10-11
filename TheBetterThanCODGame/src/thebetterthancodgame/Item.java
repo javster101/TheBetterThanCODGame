@@ -132,7 +132,7 @@ public class Item {
     {
         if(this.level <= playerLevel)
         {
-            name = "Enchanted " + name;
+            name = "Enchanted" + name;
             damage = damage * 1.5;
             healthRegen = healthRegen * 1.25;
             this.level++;

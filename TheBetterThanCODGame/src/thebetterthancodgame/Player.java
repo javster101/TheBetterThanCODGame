@@ -62,6 +62,7 @@ public class Player {
     public void levelUp(){
         level++;
         maxHealth += 5;
+        health = maxHealth;
     }
     public String attack(World w){
         String msg = "";
@@ -139,5 +140,15 @@ public class Player {
             }
         }
         return msg;
+    } 
+    
+    public int enchant(String name)
+    {
+        String lastName = inv.currentItem.name;
+        if(!this.use(name))
+            return -1;
+        if(!inv.currentItem.enchant(this.level))
+            return -2;
+        return 1;
     }
 }

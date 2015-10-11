@@ -40,9 +40,8 @@ import javafx.scene.text.Text;
       boolean n = inv.add(new Item(ItemList.Dagger));
        boolean n1 = inv.add(new Item(ItemList.Airhorn));
         boolean n2 = inv.add(new Item(ItemList.Glock18));
-         boolean n3 = inv.add(new Item(ItemList.MountainDew)); 
-         boolean n5 = inv.add(new Item(ItemList.MountainDew)); 
-          boolean n4 = inv.add(new Item(ItemList.Glock18));
+         boolean n3 = inv.add(new Item(ItemList.Doritos)); 
+         boolean n5 = inv.add(new Item(ItemList.Mace)); 
         
       List<Item> iteml = inv.items;
    // Setup UI elements here
@@ -199,25 +198,25 @@ import javafx.scene.text.Text;
        
           
     
-          iv1.setFitWidth(290);
+          iv1.setFitWidth(180);
          iv1.setPreserveRatio(true);
          iv1.setSmooth(true);
          iv1.setCache(true);
-         iv2.setFitWidth(250);
+         iv2.setFitWidth(160);
          iv2.setFitHeight(280);
          iv2.setSmooth(true);
          iv2.setCache(true);
-         iv3.setFitWidth(200);
+         iv3.setFitWidth(160);
          iv3.setFitHeight(380);
          iv3.setSmooth(true);
          iv3.setCache(true);
          
 
-         textarea.setPrefColumnCount(16);
-         quests.setPrefRowCount(20);
-         invarea.setPrefColumnCount(11);
-         invarea.setPrefRowCount(25);
-         textarea.setPrefRowCount(12);
+         textarea.setPrefColumnCount(12);
+         quests.setPrefRowCount(6);
+         invarea.setPrefColumnCount(8);
+         invarea.setPrefRowCount(8);
+         textarea.setPrefRowCount(14);
          
         Button saveButt = new Button("Enter");
         leftVb.getChildren().add(textarea);
